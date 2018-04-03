@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>webpack 4 quickstart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+
+<body>
+  <div class="st-navigation">
+    <nav class="st-navigation__menu">
+      <a class="st-navigation__item st-navigation__item--current" accesskey="2" href="#sy-01">What we do</a>
+      <a class="st-navigation__item" accesskey="3" href="#sy-02">Why us</a>
+      <a class="st-navigation__item" accesskey="4" href="#sy-03">Meet us</a>
+      <a class="st-navigation__item" accesskey="5" href="#sy-04">Contact</a>
+    </nav>
+  </div>
+
+
+  <svg class="st-satellyte" viewBox="0 0 100 100" preserveAspectRatio="xMinYMax slice" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle fill='#ffffff' cx="50" cy="50" r="50"  />
+    <path id="theMotionPath" d="M 50, 0
+    A 10 10 0 0 0 50 100"
+        fill="none" stroke="blue" stroke-width="1"  />
+
+    <circle cx="" cy="" r="2" fill="#45cbe6">
+      <!-- Define the motion path animation -->
+      <animateMotion dur="6s" repeatCount="indefinite">
+        <mpath xlink:href="#theMotionPath"/>
+      </animateMotion>
+    </circle>
+  </svg>
+
+  <div class="sy-main-container">
+
+    <!-- header intro -->
+    <a name='sy-01'></a>
+    <div class="sy-section">
+      <h2 class='sy-headline sy-headline--sub'>What we do</h2>
+      <h1 class='sy-headline sy-headline--main'>What we do</h2>
+
+        <h3 class='sy-headline sy-headline--text'>Full Stack Digital Servie</h1>
+      <p class="sy-copy">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. A rerum quas asperiores sint magni adipisci sed laboriosam incidunt
+        pariatur necessitatibus officiis illum labore, modi veniam quisquam dolores. Earum, ipsa animi!
+      </p>
+    </div>
+
+    <a name='sy-02'></a>
+    <div class="sy-section">
+      <div class="sy-section">
+        <h2 class='sy-headline sy-headline--sub'>Why us</h2>
+        <h1 class='sy-headline sy-headline--main'>What we do</h2>
+      </div>
+    </div>
+
+    <a name='sy-03'></a>
+    <div class="sy-section">
+      <h1 class='sy-headline sy-headline--text'>Meet us</h1>
+    </div>
+
+    <a name='sy-04'></a>
+    <div class="sy-section">
+      <h1 class='sy-headline sy-headline--text'>Contact</h1>
+      <button class="sy-button">Send</button>
+    </div>
+  </div>
+</body>
+
+</html>
