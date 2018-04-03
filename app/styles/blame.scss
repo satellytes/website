@@ -1,0 +1,50 @@
+
+.st-satellyte {
+  width: 100%;
+  max-height: 400px;
+}
+
+.sy-main-container {
+}
+.sy-section {
+  max-width: 340px;
+  margin-bottom: 30px;
+  padding: 20px;
+  margin: auto;
+}
+
+.sy-button {
+  color: #282c59;
+  background-color: $highlight;
+  border: 0;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  font-weight: 600;
+  &:hover {
+    background-color: #282c59;
+    color: $highlight;
+  }
+}
+
+
+// .sy-headline {
+//   font-weight: 300;
+//   margin: 0;
+// }
+
+// .sy-headline--text {
+//   font-size: 2rem;
+//   font-weight: 600;
+// }
+
+// .sy-headline--sub {
+//   color: $highlight;
+//   font-size: 2rem;
+//   font-weight: 600;
+// }
+
+// .sy-headline--main {
+//   color: $highlight;
+//   font-size: 3rem;
+// }

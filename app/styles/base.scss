@@ -1,0 +1,31 @@
+html {
+  font-size: percentage(10/16);
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: $color-background;
+  color: $text-color;
+  margin: 0;
+
+  font-size: 1.6rem;
+}
+
+a {
+  color: inherit;
+}
+
+svg {
+  max-width: 100%;
+}
+
+.sy-link {
+  font-size: 1.5rem;
+  color: $color-highlight;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline
+  }
+}

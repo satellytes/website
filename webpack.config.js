@@ -21,7 +21,7 @@ module.exports = {
     main: ['./src/index.ts', './styles/index.scss']
   },
   resolve: {
-    extensions: ['*', '.tsx', '.ts', '.js', '.scss']
+    extensions: ['*', '.tsx', '.ts', '.js', '.scss', '.html', '.png']
   },
   module: {
     rules: [
@@ -29,15 +29,6 @@ module.exports = {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: { minimize: true }
-          }
-        ]
       },
       {
         test: /\.scss$/,
@@ -81,8 +72,7 @@ module.exports = {
   plugins: [
     minicss,
     new HtmlWebPackPlugin({
-      template: './index.html',
-      filename: './index.html'
+      template: 'index.html'
     })
   ],
   stats: 'normal'

@@ -3,70 +3,94 @@
 
 <head>
   <meta charset="utf-8">
-  <title>webpack 4 quickstart</title>
+  <title><%= htmlWebpackPlugin.options.title || 'Webpack App'%></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 </head>
 
 <body>
-  <div class="st-navigation">
-    <nav class="st-navigation__menu">
-      <a class="st-navigation__item st-navigation__item--current" accesskey="2" href="#sy-01">What we do</a>
-      <a class="st-navigation__item" accesskey="3" href="#sy-02">Why us</a>
-      <a class="st-navigation__item" accesskey="4" href="#sy-03">Meet us</a>
-      <a class="st-navigation__item" accesskey="5" href="#sy-04">Contact</a>
+  <div class="sy-navigation">
+    <nav class="sy-navigation__menu">
+      <a class="sy-navigation__item sy-navigation__item--current" href="#sy-01">What we do</a>
+      <a class="sy-navigation__item" href="#sy-02">Why us</a>
+      <a class="sy-navigation__item" href="#sy-03">Meet us</a>
+      <a class="sy-navigation__item" href="#sy-04">Contact</a>
     </nav>
   </div>
 
+  <%= require('html-loader!./partials/intro.html') %>
 
-  <svg class="st-satellyte" viewBox="0 0 100 100" preserveAspectRatio="xMinYMax slice" version="1.1" xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    <circle fill='#ffffff' cx="50" cy="50" r="50"  />
-    <path id="theMotionPath" d="M 50, 0
-    A 10 10 0 0 0 50 100"
-        fill="none" stroke="blue" stroke-width="1"  />
+  <section class="sy-section">
+    <header class="sy-header">
+      <h2 class="sy-headline sy-headline--main">What we do</h2>
+      <p class="sy-header__tagline">We offer only what we are truly good at...</ph3>
+    </header>
 
-    <circle cx="" cy="" r="2" fill="#45cbe6">
-      <!-- Define the motion path animation -->
-      <animateMotion dur="6s" repeatCount="indefinite">
-        <mpath xlink:href="#theMotionPath"/>
-      </animateMotion>
-    </circle>
-  </svg>
+    <h3 class="sy-headline sy-headline--content">Full Stack Digital Services</h3>
+    <p>Satellytes is an agency that orbits around large enterprises and helps them built the greatest possible services and interfaces. With a y, because it’s cooler and the i was obviously already taken decades ago.</p>
 
-  <div class="sy-main-container">
+    <p>We offer full stack digital services, starting as soon as somebody has a notion of what could possibly be a good idea to do until the last funnel or line of code is completed and as beautifully peformant as it can be.</p>
 
-    <!-- header intro -->
-    <a name='sy-01'></a>
-    <div class="sy-section">
-      <h2 class='sy-headline sy-headline--sub'>What we do</h2>
-      <h1 class='sy-headline sy-headline--main'>What we do</h2>
+    <h3 class="sy-headline sy-headline--content">What others do better</h3>
+    <p>SEM, XR, E-Commerce, Marketing, simple websites and a lot of other stuff, but we built a vivid and broad network of freelancers and agencies over the last two decades which we always did great jobs with.</p>
+  </section>
 
-        <h3 class='sy-headline sy-headline--text'>Full Stack Digital Servie</h1>
-      <p class="sy-copy">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. A rerum quas asperiores sint magni adipisci sed laboriosam incidunt
-        pariatur necessitatibus officiis illum labore, modi veniam quisquam dolores. Earum, ipsa animi!
-      </p>
-    </div>
 
-    <a name='sy-02'></a>
-    <div class="sy-section">
-      <div class="sy-section">
-        <h2 class='sy-headline sy-headline--sub'>Why us</h2>
-        <h1 class='sy-headline sy-headline--main'>What we do</h2>
+
+  <section class="sy-section">
+    <header class="sy-header">
+      <h2 class="sy-headline sy-headline--main">Why us</h2>
+      <p class="sy-header__tagline">We're on your side - and the customer's</ph3>
+    </header>
+
+    <h3 class="sy-headline sy-headline--content">We work with passion</h3>
+    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus.</p>
+  </section>
+
+  <section class="sy-section">
+    <h2 class="sy-headline sy-headline--main">Meet us</h2>
+    <p>We love learning an networking at meetups and conferences. Here’s what’s up next for us:</p>
+  </section>
+
+  <section class="sy-section">
+    <h2 class="sy-headline sy-headline--main">Office</h2>
+    <p>
+        Satellytes GmbH<br>
+        Landwehrstraße 79 a<br>
+        80336 München<br>
+        Tel. +49 89 45678912
+    </p>
+  </section>
+
+  <section class="sy-section">
+    <h2 class="sy-headline sy-headline--main">Contact</h2>
+    <p>
+        Nutzen Sie unser Kontaktformular oder schreiben Sie uns eine E-Mail an
+        <a class="sy-link" href='mailto:ping@satellytes.com'>ping@satellytes.com</a>.
+    </p>
+
+    <form>
+      <div class="sy-formgroup">
+        <input type="text" placeholder="Name">
       </div>
-    </div>
 
-    <a name='sy-03'></a>
-    <div class="sy-section">
-      <h1 class='sy-headline sy-headline--text'>Meet us</h1>
-    </div>
+      <div class="sy-formgroup">
+        <input type="text" placeholder="Your E-Mail">
+      </div>
 
-    <a name='sy-04'></a>
-    <div class="sy-section">
-      <h1 class='sy-headline sy-headline--text'>Contact</h1>
-      <button class="sy-button">Send</button>
-    </div>
-  </div>
+      <div class="sy-formgroup">
+        <textarea placeholder="Your message"></textarea>
+      </div>
+
+      <div class="sy-formgroup">
+        <button type="submit">Send</button>
+      </div>
+
+    </form>
+  </section>
+
+  <% require('html-loader!./partials/content.html') %>
+
 </body>
 
 </html>
