@@ -9,88 +9,28 @@
 </head>
 
 <body>
-  <div class="sy-navigation">
-    <nav class="sy-navigation__menu">
-      <a class="sy-navigation__item sy-navigation__item--current" href="#sy-01">What we do</a>
-      <a class="sy-navigation__item" href="#sy-02">Why us</a>
-      <a class="sy-navigation__item" href="#sy-03">Meet us</a>
-      <a class="sy-navigation__item" href="#sy-04">Contact</a>
-    </nav>
-  </div>
-
-  <%= require('html-loader!./partials/intro.html') %>
 
   <section class="sy-section">
     <header class="sy-header">
-      <h2 class="sy-headline sy-headline--main">What we do</h2>
-      <p class="sy-header__tagline">We offer only what we are truly good at...</ph3>
+      <h2 class="sy-headline sy-headline--section">What we do</h2>
+      <span class="sy-header__tagline">We offer only what we’re truely great at ...</span>
     </header>
 
     <h3 class="sy-headline sy-headline--content">Full Stack Digital Services</h3>
-    <p>Satellytes is an agency that orbits around large enterprises and helps them built the greatest possible services and interfaces. With a y, because it’s cooler and the i was obviously already taken decades ago.</p>
-
-    <p>We offer full stack digital services, starting as soon as somebody has a notion of what could possibly be a good idea to do until the last funnel or line of code is completed and as beautifully peformant as it can be.</p>
-
-    <h3 class="sy-headline sy-headline--content">What others do better</h3>
-    <p>SEM, XR, E-Commerce, Marketing, simple websites and a lot of other stuff, but we built a vivid and broad network of freelancers and agencies over the last two decades which we always did great jobs with.</p>
-  </section>
-
-
-
-  <section class="sy-section">
-    <header class="sy-header">
-      <h2 class="sy-headline sy-headline--main">Why us</h2>
-      <p class="sy-header__tagline">We're on your side - and the customer's</ph3>
-    </header>
-
-    <h3 class="sy-headline sy-headline--content">We work with passion</h3>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus.</p>
-  </section>
-
-  <section class="sy-section">
-    <h2 class="sy-headline sy-headline--main">Meet us</h2>
-    <p>We love learning an networking at meetups and conferences. Here’s what’s up next for us:</p>
-  </section>
-
-  <section class="sy-section">
-    <h2 class="sy-headline sy-headline--main">Office</h2>
     <p>
-        Satellytes GmbH<br>
-        Landwehrstraße 79 a<br>
-        80336 München<br>
-        Tel. +49 89 45678912
-    </p>
-  </section>
-
-  <section class="sy-section">
-    <h2 class="sy-headline sy-headline--main">Contact</h2>
-    <p>
-        Nutzen Sie unser Kontaktformular oder schreiben Sie uns eine E-Mail an
-        <a class="sy-link" href='mailto:ping@satellytes.com'>ping@satellytes.com</a>.
+      Satellytes is an agency that orbits around large enterprises and helps them built the greatest possible services and interfaces. With a y, because it’s cooler and the i was obviously already taken decades ago.
     </p>
 
-    <form>
-      <div class="sy-formgroup">
-        <input type="text" placeholder="Name">
-      </div>
+    <p>
+      We offer full stack digital services, starting as soon as somebody has a notion of what could possibly be a good idea to do until the last funnel or line of code is completed and as beautifully peformant as it can be.
+    </p>
 
-      <div class="sy-formgroup">
-        <input type="text" placeholder="Your E-Mail">
-      </div>
-
-      <div class="sy-formgroup">
-        <textarea placeholder="Your message"></textarea>
-      </div>
-
-      <div class="sy-formgroup">
-        <button type="submit">Send</button>
-      </div>
-
-    </form>
+    <%= require('html-loader!./partials/services.html') %>
   </section>
 
-  <% require('html-loader!./partials/content.html') %>
 
+
+  <h2 class="sy-headline sy-headline--section">Meet us</h2>
 </body>
 
 </html>

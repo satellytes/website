@@ -1,0 +1,11 @@
+@import "variables";
+@import "base";
+@import "headline";
+
+@import "navigation";
+@import "intro";
+
+.sy-section {
+  max-width: 500px;
+  margin: auto;
+}

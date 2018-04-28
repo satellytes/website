@@ -1,0 +1,44 @@
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-weight: map-get($font-weights, normal);
+}
+.sy-headline {
+  margin: 0;
+  padding: 0;
+}
+
+.sy-headline--section {
+  font-size: 3rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 4rem;
+  }
+}
+
+.sy-headline--content {
+  font-size: 2rem;
+  margin-bottom: 10px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 3rem;
+  }
+}
+
+.sy-header {
+  color: color(brand);
+  margin-bottom: 60px;
+
+  .sy-header__tagline {
+    margin-top: 10px;
+  }
+}
+
+.sy-header__tagline {
+  display: block;
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  line-height: 1.17;
+  @include media-breakpoint-up(md) {
+    font-size: 6rem;
+  }
+}

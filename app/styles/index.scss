@@ -1,11 +1,7 @@
 @import "variables";
-@import "base";
-@import "headline";
+@import "mixins/breakpoint";
 
-@import "navigation";
-@import "intro";
+@import "blame";
 
-.sy-section {
-  max-width: 500px;
-  margin: auto;
-}
+@import "headlines";
+@import "services";

@@ -1,4 +1,28 @@
-$color-background: #202840;
-$text-color: #ffffff;
+$font-weights: (
+normal: 400,
+bold: 700
+);
 
-$color-highlight: #5CCFE6;
+$colors: (
+  white: #ffffff,
+  brand: #5CCFE6,
+  dark: #202840
+);
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);

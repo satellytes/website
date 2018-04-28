@@ -21,7 +21,7 @@ module.exports = {
     main: ['./src/index.ts', './styles/index.scss']
   },
   resolve: {
-    extensions: ['*', '.tsx', '.ts', '.js', '.scss', '.html', '.png']
+    extensions: ['*', '.tsx', '.ts', '.js', '.scss', '.html', '.png', '.svg']
   },
   module: {
     rules: [
@@ -61,7 +61,7 @@ module.exports = {
       },
       // IMAGES
       {
-        test: /\.(jpe?g|png|gif)$/,
+        test: /\.(jpe?g|png|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]'
