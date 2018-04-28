@@ -20,9 +20,6 @@ module.exports = {
   entry: {
     main: ['./src/index.ts', './styles/index.scss']
   },
-  resolve: {
-    extensions: ['*', '.tsx', '.ts', '.js', '.scss', '.html', '.png', '.svg']
-  },
   module: {
     rules: [
       {
@@ -65,6 +62,12 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]'
+        }
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader?interpolate'
         }
       }
     ]

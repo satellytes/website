@@ -3,34 +3,71 @@
 
 <head>
   <meta charset="utf-8">
-  <title><%= htmlWebpackPlugin.options.title || 'Webpack App'%></title>
+  <title>Satellytes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 </head>
 
 <body>
+  <div class="sy-page">
+    ${ require('./partials/services.html') }
+    ${ require('./partials/why-us.html') }
 
-  <section class="sy-section">
-    <header class="sy-header">
-      <h2 class="sy-headline sy-headline--section">What we do</h2>
-      <span class="sy-header__tagline">We offer only what we’re truely great at ...</span>
-    </header>
+    <section class="sy-section">
+      <h2 class="sy-headline sy-headline--section">Meet us</h2>
 
-    <h3 class="sy-headline sy-headline--content">Full Stack Digital Services</h3>
-    <p>
-      Satellytes is an agency that orbits around large enterprises and helps them built the greatest possible services and interfaces. With a y, because it’s cooler and the i was obviously already taken decades ago.
-    </p>
+      <div class="sy-section__content">
+        <p>
+            We love learning an networking at meetups and conferences. Here’s what’s up next for us:
+      <img class="sy-image" alt="" src="assets/images/clients.svg">
+        </p>
 
-    <p>
-      We offer full stack digital services, starting as soon as somebody has a notion of what could possibly be a good idea to do until the last funnel or line of code is completed and as beautifully peformant as it can be.
-    </p>
+        ${ require('./partials/meetups.html') }
 
-    <%= require('html-loader!./partials/services.html') %>
-  </section>
+        <p>
+          You know a great event we should be at, too?
+          <a href='#' class="sy-link">Send us a suggestion</a>
+        </p>
+      </div>
+    </section>
 
+    <section class="sy-section">
+      <h2 class="sy-headline sy-headline--section">Office</h2>
 
+      <div class="sy-section__content">
+        <img alt="" src="assets/images/office-map.png">
+        <div class="sy-spacer"></div>
 
-  <h2 class="sy-headline sy-headline--section">Meet us</h2>
+        <div class="sy-layout sy-layout--two-cols">
+          <div class="sy-column">
+            <div class="sy-address">
+              <strong>Satellytes GmbH</strong><br>
+              Landwehrstraße 79a<br>
+              80336 München<br>
+              Tel. +49 89 45678912<br>
+            </div>
+          </div>
+
+          <div class="sy-column">
+              In Google Maps öffnen
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sy-section">
+      <h2 class="sy-headline sy-headline--section">Contact</h2>
+      <p>
+          Nutzen Sie unser Kontaktformular oder schreiben Sie uns eine E-Mail an
+          <a class="sy-link" href='ping@satellytes.com'>ping@satellytes.com</a>.
+      </p>
+
+      <form>
+
+      </form>
+    </section>
+
+  </div>
 </body>
 
 </html>

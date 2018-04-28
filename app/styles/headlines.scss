@@ -9,6 +9,7 @@ h1, h2, h3, h4, h5 {
 
 .sy-headline--section {
   font-size: 3rem;
+  margin-bottom: 10px;
 
   @include media-breakpoint-up(md) {
     font-size: 4rem;
@@ -25,7 +26,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .sy-header {
-  color: color(brand);
+  color: sycolor(brand);
   margin-bottom: 60px;
 
   .sy-header__tagline {
@@ -41,4 +42,14 @@ h1, h2, h3, h4, h5 {
   @include media-breakpoint-up(md) {
     font-size: 6rem;
   }
+}
+
+
+.sy-spacer {
+  margin-bottom: 10px;
+}
+
+.sy-page {
+  max-width: 760px;
+  margin: auto;
 }

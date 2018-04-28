@@ -9,10 +9,6 @@ $colors: (
   dark: #202840
 );
 
-@function color($name) {
-  @return map-get($colors, $name);
-}
-
 
 $grid-breakpoints: (
   // Extra small screen / phone
@@ -26,3 +22,6 @@ $grid-breakpoints: (
   // Extra large screen / wide desktop
   xl: 1200px
 );
+
+$page-padding: 20px;
+$content-distance: 20px;

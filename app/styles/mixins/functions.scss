@@ -1,0 +1,3 @@
+@function sycolor($name) {
+  @return map-get($colors, $name);
+}
