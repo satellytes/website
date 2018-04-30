@@ -1,0 +1,41 @@
+.sy-formgroup + .sy-formgroup {
+  margin-top: 20px;
+}
+
+.sy-formfield {
+  display: flex;
+  align-items: center;
+  background-color: rgba(sycolor(black), 0.2);
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.sy-formfield__input {
+  flex: 1 1 100%;
+}
+
+.sy-formfield__postfix {
+  flex: 1 0 auto;
+}
+
+.sy-input {
+
+  display: inline-block;
+  width: 100%;
+  border: none;
+  color: sycolor(white);
+  background-color: transparent;
+  font-size: 1.5rem;
+
+  &::placeholder {
+    color: sycolor(brand);
+  }
+}
+
+.sy-input[type="text"] {
+  line-height: 30px;
+}
+
+textarea.sy-input {
+  height: 150px;
+}

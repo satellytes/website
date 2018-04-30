@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="18px" viewBox="0 0 26 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1.5,0 L20.5,-4.4408921e-16 C21.3284271,-5.96268804e-16 22,0.671572875 22,1.5 L22,1.92530085 C22,2.59639154 21.6634262,3.22275067 21.1037958,3.59312422 L12.4855374,9.29684434 C11.8374001,9.72579337 10.9994474,9.74040213 10.3367521,9.334306 L0.955010526,3.58522531 C0.361690303,3.22164187 3.9424246e-16,2.57580076 0,1.87994029 L2.22044605e-16,1.5 C1.20591542e-16,0.671572875 0.671572875,3.74224199e-16 1.5,2.22044605e-16 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile" transform="translate(-296.000000, -4337.000000)">
+            <g id="Group-3" transform="translate(298.000000, 4339.000000)">
+                <g id="Group-2">
+                    <rect id="Rectangle-10" fill="#5CCFE6" opacity="0.200000003" x="0" y="0" width="22" height="16" rx="2"></rect>
+                    <g id="Rectangle-10">
+                        <use fill="#264256" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <path stroke="#192033" stroke-width="2" d="M1.5,-1 L20.5,-1 C21.8807119,-1 23,0.119288125 23,1.5 L23,1.92530085 C23,2.93193688 22.4951393,3.87147558 21.6556937,4.4270359 L13.0374353,10.130756 C12.0652294,10.7741796 10.8083004,10.7960927 9.81425736,10.1869485 L0.43251579,4.43786782 C-0.457464545,3.89249266 -1,2.923731 -1,1.87994029 L-1,1.5 C-1,0.119288125 0.119288125,-1 1.5,-1 Z"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
