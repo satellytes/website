@@ -1,90 +1,85 @@
-// import * as lobos from 'lobos';
+require('intersection-observer');
 
-// var dims = 2
-// var options = { params: 'new-joe-kuo-6.21201', resolution: 32 } // *optional*
-// var sequence = new lobos.Sobol(dims, options)
-// var points = sequence.take(100)
-
-const STARS = [
-  {x: 10, y: 190},
-  {x: 50, y: 150},
-  {x: 100, y: 170},
-  {x: 110, y: 185},
-  {x: 80, y: 175},
-  {x: 75, y: 195},
-  {x: 30, y: 130},
-  {x: 45, y: 180},
-  {x: 15, y: 97}
-]
+import { SatellyteIntro } from './intro.ts';
 
 
-class Star {
-  constructor(private _element: any, private point) {
+class Navigation {
+  private _bar;
+  private _barBlock;
+
+  private _container;
+  private _items;
+
+  constructor(private _element) {
     this.init();
+    this.initObserver();
   }
 
-  get element() {
-    return this._element;
+  start() {
+    this.activate(this._items[0]);
+  }
+
+  initObserver() {
+    const sectionNames = ['sy-what', 'sy-why', 'sy-meet', 'sy-contact'];
+    const sections = sectionNames.map(name => document.querySelector(`a[name='${name}']` ));
+    const options = {
+      // 0.5 = The callback is fired when 50% of the element is visible
+      // We can add more values to the array, like 0.25, 0.75 or 1.0
+      threshold: [0.5]
+    };
+
+    // Instantiate the IntersectionObserver class
+    const observer = new IntersectionObserver((entries, observer) => {
+      // This is the callback.
+      const entry = entries[0];
+      if(entry.isIntersecting) {
+        const target = entry.target;
+        const targetAnchor = target.getAttribute('name');
+        const item = this._element.querySelector(`[href='#${targetAnchor}']`);
+        this.activate(item);
+      }
+      // End of callback. Pass the options object as the second argument.
+    }, options);
+
+    sections.forEach((item) => observer.observe(item as Element));
   }
 
   init() {
-    const {element} = this;
-    element.style.animationDelay = 15 * Math.random() + "s";
-    element.setAttribute('fill','#ffffff');
-    // element.setAttribute('fill','#ff0000');
+    this._container = this._element.querySelector('.sy-navigation__list');
+    this._bar = this._element.querySelector('.sy-navigation__bar');
+    this._barBlock = this._element.querySelector('.sy-navigation__bar-block');
 
-    const radius = 0.5 + Math.random()/2;
-
-    element.setAttribute('cx', this.point.x);
-    element.setAttribute('cy', this.point.y);
-    element.setAttribute('r', radius);
-  }
-}
-class SatellyteIntro {
-  private path: any;
-  private namespaceURI: any;
-
-  constructor(private svg: SVGElement) {
-    this.path = svg.querySelector('.satellyte__path') as SVGPathElement;
-    this.namespaceURI = svg.namespaceURI;
+    this._items = this._element.querySelectorAll('.sy-navigation__item');
+    this._items.forEach( item => {
+      item.addEventListener('mouseover', () => {
+        this.activate(item);
+      })
+    })
   }
 
-  run() {
-    const starsContainer = this.svg.querySelector('.satellyte__stars');
-    const starPoints = [...STARS] as any;
-    // create some random additional points to the
-    // fixed set of stars we have already defined by hand
-    for (let i = 0; i < 50; i++) {
-      starPoints.push(this.getRandomPosition())
+  activate(item){
+    if(!item) {
+      return;
     }
 
-    for (let i = 0; i < starPoints.length; i++) {
-      const circle = document.createElementNS(this.namespaceURI,'circle');
-      const point = starPoints[i];
-      const star = new Star(circle, point);
-      starsContainer!.appendChild(star.element);
-    }
-
-  }
-
-  getRandomPosition() {
-    const box = {
-      padding: 20,
-      x: -200,
-      y: 0,
-      width: 300,
-      height: 200
-    }
-
-    return {
-      x: box.padding + box.x + Math.random() * (box.width) - box.padding,
-      y: box.padding + box.y + Math.random() * (box.height) - box.padding
-    }
+    const margin = 20;
+    const context = this._container.getBoundingClientRect();
+    const itemBounding = item.getBoundingClientRect();
+    const scale = itemBounding.width/100;
+    const x = (itemBounding.x - 20  + itemBounding.width/2) + 'px';
+    this._bar.style.transform = `translateX(${x})`;
+    this._barBlock.style.transform = `translate(-50%) scale(${scale}, 1)`;
   }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  const svg = document.getElementsByClassName('sy-intro__svg')[0] as SVGElement;
+  const svg = document.querySelector('.sy-intro__svg') as SVGElement;
   const intro = new SatellyteIntro(svg);
   intro.run();
+
+  const navigationElement = document.querySelector('.sy-navigation');
+  const navigation = new Navigation(navigationElement);
+
+  navigation.start();
 });
+

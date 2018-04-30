@@ -76,6 +76,14 @@ module.exports = {
     minicss,
     new HtmlWebPackPlugin({
       template: 'index.html'
+    }),
+    new HtmlWebPackPlugin({
+      filename: 'imprint.html',
+      template: 'imprint.html'
+    }),
+    new HtmlWebPackPlugin({
+      filename: 'privacy.html',
+      template: 'privacy.html'
     })
   ],
   stats: 'normal'

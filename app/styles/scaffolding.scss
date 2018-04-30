@@ -39,15 +39,15 @@ img {
   }
 }
 
-.sy-section + .sy-section {
+.sy-section:nth-of-type(1n):not(:first-of-type),
+.sy-section + .sy-section  {
   margin-top: 60px;
 }
+
 
 .sy-section__content  + .sy-section__content {
   margin-top: 60px;
 }
-
-
 
 
 .sy-layout--two-cols {
