@@ -10,22 +10,42 @@
     background-size: auto auto;
     margin-bottom: 20px;
 
-    margin-left: -$page-padding;
-    margin-right: -$page-padding;
-    padding-left: 20px;
-    padding-right: 20px;
-
     &:nth-child(odd) {
-      background-image: url("../assets/images/service-arrow.svg");
-      background-position: right center;
-      padding-right: 20%;
-  }
+    }
 
     &:nth-child(even) {
-      background-image: url("../assets/images/service-arrow-left.svg");
-      background-position: left center;
       text-align: right;
-      padding-left: 20%;
+    }
+
+    @include media-breakpoint-up(md) {
+      width: 50%;
+      &:nth-child(odd) {
+        margin-right: 50%;
+      }
+
+      &:nth-child(even) {
+        margin-left: 50%;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin-left: -$page-padding;
+      margin-right: -$page-padding;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      &:nth-child(odd) {
+        background-image: url("../assets/images/service-arrow.svg");
+        background-position: right center;
+        padding-right: 20%;
+      }
+
+      &:nth-child(even) {
+        background-image: url("../assets/images/service-arrow-left.svg");
+        background-position: left center;
+        text-align: right;
+        padding-left: 20%;
+      }
     }
 }
 

@@ -1,0 +1,37 @@
+.sy-spacer {
+  margin-bottom: 10px;
+}
+
+.sy-page {
+  max-width: $max-page-width;
+  margin: auto;
+}
+
+
+.sy-section {
+  p + p {
+    margin-top: $content-distance;
+  }
+}
+
+.sy-section:nth-of-type(1n):not(:first-of-type),
+.sy-section + .sy-section  {
+  margin-top: 60px;
+}
+
+
+.sy-section__content  + .sy-section__content {
+  margin-top: 60px;
+}
+
+
+.sy-grid--two-cols {
+  display: flex;
+
+  .sy-column {
+    width: 50%;
+  }
+  .sy-column:first-child {
+    margin-right: 20px;
+  }
+}

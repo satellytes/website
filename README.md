@@ -1,5 +1,11 @@
 # Satellytes
 
+Deploy:
+
+master
+stable
+pitch -> Präsentations Framework
+
 ## Notes
 
 Namespace Prefix is `ny-`.

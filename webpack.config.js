@@ -12,6 +12,9 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 
 module.exports = {
   context: path.resolve(__dirname, 'app'),
+  resolve: {
+    extensions: ['.ts', '.js', '.json', '.*']
+  },
   devServer: {
     compress: true,
     port: 3000,
