@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 165 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile" transform="translate(-92.000000, -225.000000)" fill="#202840">
+            <g id="Group" transform="translate(91.000000, 222.000000)">
+                <text id="Satellytes" font-family=".SFNSDisplay, .SF NS Display" font-size="40" font-weight="normal">
+                    <tspan x="0.5" y="39.5078125">Satellytes</tspan>
+                </text>
+                <path d="M10.9129402,4.17032992 C7.87828556,5.00555323 8.69709896,8.2004622 12.1493213,6.93561955 C17.9972039,4.79304281 23.6690614,5.35889192 29.1648939,8.63316689 C23.0651992,3.98778042 16.9812146,2.5001681 10.9129402,4.17032992 Z" id="Path-4" transform="translate(19.101498, 6.070490) scale(-1, 1) translate(-19.101498, -6.070490) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

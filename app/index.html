@@ -10,63 +10,13 @@
 
 <body>
   <div class="sy-page">
+    ${ require('./partials/intro.html') }
+
     ${ require('./partials/services.html') }
     ${ require('./partials/why-us.html') }
-
-    <section class="sy-section">
-      <h2 class="sy-headline sy-headline--section">Meet us</h2>
-
-      <div class="sy-section__content">
-        <p>
-            We love learning an networking at meetups and conferences. Here’s what’s up next for us:
-      <img class="sy-image" alt="" src="assets/images/clients.svg">
-        </p>
-
-        ${ require('./partials/meetups.html') }
-
-        <p>
-          You know a great event we should be at, too?
-          <a href='#' class="sy-link">Send us a suggestion</a>
-        </p>
-      </div>
-    </section>
-
-    <section class="sy-section">
-      <h2 class="sy-headline sy-headline--section">Office</h2>
-
-      <div class="sy-section__content">
-        <img alt="" src="assets/images/office-map.png">
-        <div class="sy-spacer"></div>
-
-        <div class="sy-layout sy-layout--two-cols">
-          <div class="sy-column">
-            <div class="sy-address">
-              <strong>Satellytes GmbH</strong><br>
-              Landwehrstraße 79a<br>
-              80336 München<br>
-              Tel. +49 89 45678912<br>
-            </div>
-          </div>
-
-          <div class="sy-column">
-              In Google Maps öffnen
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sy-section">
-      <h2 class="sy-headline sy-headline--section">Contact</h2>
-      <p>
-          Nutzen Sie unser Kontaktformular oder schreiben Sie uns eine E-Mail an
-          <a class="sy-link" href='ping@satellytes.com'>ping@satellytes.com</a>.
-      </p>
-
-      <form>
-
-      </form>
-    </section>
-
+    ${ require('./partials/meet-us.html') }
+    ${ require('./partials/office.html') }
+    ${ require('./partials/contact.html') }
   </div>
 </body>
 

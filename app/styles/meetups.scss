@@ -1,0 +1,28 @@
+.sy-meetups {
+  margin-top: $content-distance;
+  margin-bottom: $content-distance;
+}
+
+.sy-meetups__item {
+  display: flex;
+}
+
+.sy-meetups__item + .sy-meetups__item {
+  margin-top: 25px;
+}
+
+.sy-meetups__date {
+  padding: 5px;
+
+  margin-right: 20px;
+
+  background-color: sycolor(brand);
+  border-radius: 5px;
+  color: sycolor(dark);
+
+  width: 5rem;
+  height: 5rem;
+
+  font-size: 1.5rem;
+  font-weight: map-get($font-weights, bold);
+}

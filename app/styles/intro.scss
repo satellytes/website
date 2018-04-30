@@ -1,0 +1,32 @@
+.sy-intro {
+  height: calc(100vh - 100px);
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -150px; // bleed in following content
+}
+
+.sy-intro__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes twinkle {
+  20% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+}
+
+.satellyte__stars circle {
+  opacity: 0;
+  animation: 4s infinite alternate twinkle;
+}
