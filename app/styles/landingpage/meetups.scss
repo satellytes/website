@@ -1,14 +1,20 @@
 .sy-meetups {
   margin-top: $content-distance;
   margin-bottom: $content-distance;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .sy-meetups__item {
   display: flex;
+  flex: 1 1 320px;
 }
 
-.sy-meetups__item + .sy-meetups__item {
+.sy-meetups__item:not(:first-child) {
   margin-top: 25px;
+  @include media-breakpoint-up(sm) {
+    margin-top: 0;
+  }
 }
 
 .sy-meetups__date {

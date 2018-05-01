@@ -4,13 +4,17 @@
 
 .sy-footer__weblinks {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.sy-footer__weblinks-item:not(:first-child) {
+  margin-left: 20px;
 }
 
 .sy-footer__servicelinks {
   text-align: center;
 }
 
-.sy-footer__servicelinks-item  + .sy-footer__servicelinks-item {
+.sy-footer__servicelinks-item:not(:first-child){
   margin-left: 20px;
 }
