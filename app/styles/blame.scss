@@ -1,20 +1,3 @@
-.sy-weblinks {
-  display: flex;
-  justify-content: space-around;
-}
-
-.sy-servicelinks {
-  text-align: center;
-}
-
-.sy-servicelinks__item  + .sy-servicelinks__item  {
-  margin-left: 20px;
-}
-
-.sy-footer {
-  padding-bottom: 60px;
-}
-
 
 .sy-landingpage {
   @include media-breakpoint-up(sm) {

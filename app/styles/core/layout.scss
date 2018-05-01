@@ -7,21 +7,32 @@
   margin: auto;
 }
 
-
 .sy-section {
   p + p {
     margin-top: $content-distance;
   }
 }
 
-.sy-section:nth-of-type(1n):not(:first-of-type),
-.sy-section + .sy-section  {
+.sy-section {
   margin-top: 60px;
 }
 
 
 .sy-section__content  + .sy-section__content {
   margin-top: 60px;
+}
+
+.sy-grid__row {
+  @include make-row;
+}
+
+.sy-grid__col-6 {
+  @include make-col-ready;
+  @include make-col(12);
+
+  @include media-breakpoint-up(md) {
+    @include make-col(6);
+  }
 }
 
 

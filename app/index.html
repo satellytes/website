@@ -10,24 +10,31 @@
 
 
 <body class="sy-landingpage">
-  ${ require('./partials/navigation.html') }
+  ${ require('./partials/landingpage/navigation.html') }
 
   <div class="sy-page">
-    ${ require('./partials/intro.html') }
+    ${ require('./partials/landingpage/intro.html') }
 
     <a name="sy-what"></a>
-    ${ require('./partials/services.html') }
+    ${ require('./partials/landingpage/services.html') }
 
     <a name="sy-why"></a>
-    ${ require('./partials/why-us.html') }
+    ${ require('./partials/landingpage/why-us.html') }
 
     <a name="sy-meet"></a>
-    ${ require('./partials/meet-us.html') }
-    ${ require('./partials/office.html') }
+    ${ require('./partials/landingpage/meet-us.html') }
 
-    <a name="sy-contact"></a>
-    ${ require('./partials/contact.html') }
+    <div class="sy-grid__row">
+      <div class="sy-grid__col-6">
+        ${ require('./partials/landingpage/office.html') }
+      </div>
+      <div class="sy-grid__col-6">
+        ${ require('./partials/landingpage/contact.html') }
+      </div>
+    </div>
+
     ${ require('./partials/footer.html') }
+
   </div>
 </body>
 

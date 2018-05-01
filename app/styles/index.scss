@@ -1,15 +1,22 @@
 @import "variables";
+
 @import "mixins/breakpoint";
 @import "mixins/functions";
+@import "mixins/grid-framework";
+@import "mixins/grid";
+
+// core set of functionality
+@import "core/layout";
+@import "core/grid-scaffolding";
+@import "core/scaffolding";
+
+// general purpose components
+@import "components/headlines";
+@import "components/form";
+@import "components/button";
+@import "components/footer";
+
+// page-specific styles
+@import "landingpage/index";
+
 @import "blame";
-
-@import "headlines";
-@import "form";
-@import "button";
-@import "services";
-@import "meetups";
-@import "navigation";
-@import "layout";
-@import "scaffolding";
-
-@import "intro";

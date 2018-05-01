@@ -1,14 +1,12 @@
+const devMode = process.env.NODE_ENV !== 'production'
+
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const minicss = new MiniCssExtractPlugin({
-  // Options similar to the same options in webpackOptions.output
-  // both options are optional
-  filename: '[name].css',
-  chunkFilename: '[id].css'
-});
 
-const IS_DEV = process.env.NODE_ENV === 'development';
+
+console.log('devMode: ', devMode);
+
 
 module.exports = {
   context: path.resolve(__dirname, 'app'),
@@ -31,30 +29,32 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
+        test: /\.s?[ac]ss$/,
         use: [
-          // MiniCssExtractPlugin.loader,
           {
-            loader: "style-loader",
+            loader: 'css-hot-loader'
+          },
+          {
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
-              sourceMap: IS_DEV
+              sourceMap: devMode
             }
           },
           {
             loader: 'postcss-loader',
             options: {
               plugins: () => [require('autoprefixer')],
-              sourceMap: IS_DEV
+              sourceMap: devMode
             }
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: IS_DEV
+              sourceMap: devMode
             }
           }
         ]
@@ -76,7 +76,12 @@ module.exports = {
     ]
   },
   plugins: [
-    minicss,
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+    }),
     new HtmlWebPackPlugin({
       template: 'index.html'
     }),

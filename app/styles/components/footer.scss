@@ -1,0 +1,16 @@
+.sy-footer {
+  padding-bottom: 60px;
+}
+
+.sy-footer__weblinks {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sy-footer__servicelinks {
+  text-align: center;
+}
+
+.sy-footer__servicelinks-item  + .sy-footer__servicelinks-item {
+  margin-left: 20px;
+}
