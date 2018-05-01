@@ -8,11 +8,11 @@
 
   <div class="sy-spacer"></div>
 
-  <form netlify>
+  <form netlify id="sy-contact-form" netlify-honeypot="non-human-field">
     <div class="sy-formgroup">
       <div class="sy-formfield">
         <div class="sy-formfield__input">
-          <input class="sy-input" type="text" placeholder="Your name"/>
+          <input class="sy-input" type="text" placeholder="Your name" name="name"/>
         </div>
         <div class="sy-formfield__postfix">
             <img src="../../assets/images/icon-person.svg"/>
@@ -23,7 +23,7 @@
     <div class="sy-formgroup">
       <div class="sy-formfield">
         <div class="sy-formfield__input">
-          <input class="sy-input" type="text" placeholder="Your email"/>
+          <input class="sy-input" type="text" placeholder="Your email" name="email"/>
         </div>
 
         <div class="sy-formfield__postfix">
@@ -34,7 +34,7 @@
 
     <div class="sy-formgroup">
       <div class="sy-formfield">
-        <textarea class="sy-input"  placeholder="Your message to us"></textarea>
+        <textarea class="sy-input"  placeholder="Your message to us" name="message"></textarea>
       </div>
     </div>
 

@@ -8,6 +8,16 @@
   background-color: rgba(sycolor(black), 0.2);
   border-radius: 5px;
   padding: 10px 20px;
+  color: sycolor(white);
+  border: 1px solid transparent;
+
+  &.has-error {
+    border: 1px solid sycolor(error);
+  }
+
+  [data-whatinput='keyboard'] &.is-focused {
+    outline: 2px solid sycolor(brand);
+  }
 }
 
 .sy-formfield__input {
@@ -19,16 +29,23 @@
 }
 
 .sy-input {
-
   display: inline-block;
   width: 100%;
   border: none;
-  color: sycolor(white);
   background-color: transparent;
+  color: inherit;
   font-size: 1.5rem;
+
+  &:focus {
+    outline: none;
+  }
 
   &::placeholder {
     color: sycolor(brand);
+  }
+
+  &.has-error::placeholder {
+    color: sycolor(error);
   }
 }
 
