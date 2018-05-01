@@ -97,7 +97,7 @@ export class ContactForm {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
-          "form-name": "contact",
+          "form-name": "sy-contact-form",
           ...data
         })
       })
