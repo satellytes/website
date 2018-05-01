@@ -1,3 +1,5 @@
+require('core-js');
+
 import { SatellyteIntro } from './intro';
 import { Navigation } from './navigation';
 

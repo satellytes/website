@@ -9,7 +9,6 @@ html {
 body {
   font-size: 1.5rem;
   margin: 0;
-  padding: 0 $page-padding;
   line-height: 1.4;
 }
 * {
@@ -23,6 +22,10 @@ p {
 img {
   max-width: 100%;
   display: block;
+}
+
+a {
+  color: inherit;
 }
 
 .sy-link {

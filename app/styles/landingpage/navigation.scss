@@ -1,9 +1,9 @@
-
 .sy-navigation {
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 
 .sy-navigation__list {
@@ -11,17 +11,35 @@
   align-items: center;
   justify-content: space-around;
   background-color: #fff;
-  margin-left: -$page-padding;
-  margin-right: -$page-padding;
+  color: sycolor(dark);
+  padding-left: $page-padding;
+  padding-right: $page-padding;
   border-bottom: 1px solid rgba(sycolor(brand), 0.2);
+
+  @include media-breakpoint-up(sm) {
+    background-color: sycolor(dark);
+    color: sycolor(white);
+    justify-content: flex-start;
+  }
+
 }
 
 .sy-navigation__item {
-  color: sycolor(dark);
   text-decoration: none;
   line-height: 60px;
   font-size: 1.6rem;
   font-weight: map-get($font-weights, bold);
+
+  @include media-breakpoint-up(sm) {
+    &:not(:first-child){
+      margin-left: 20px;
+    }
+  }
+
+  &.sy-navigation__item--active,
+  &:hover {
+    color: sycolor(brand);
+  }
 }
 
 .sy-navigation__bar {
