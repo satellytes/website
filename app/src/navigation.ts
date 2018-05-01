@@ -94,7 +94,7 @@ export class Navigation {
     const context = this._container.getBoundingClientRect();
     const itemBounding = item.element.getBoundingClientRect();
     const scale = itemBounding.width/100;
-    const x = (itemBounding.x - 20  + itemBounding.width/2) + 'px';
+    const x = (itemBounding.x + itemBounding.width/2) + 'px';
     this._bar.style.transform = `translateX(${x})`;
     this._barBlock.style.transform = `translate(-50%) scale(${scale}, 1)`;
   }
