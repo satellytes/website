@@ -51,3 +51,17 @@
   opacity: 0;
   animation: 4s infinite alternate twinkle;
 }
+
+@keyframes orbit {
+  0% {
+    transform: rotateZ(40deg);
+  }
+  100% {
+    transform: rotateZ(-20deg);
+  }
+}
+
+.planet__orbiter {
+  transform-origin: 250px -100px;
+  animation:  10s infinite linear orbit;
+}
