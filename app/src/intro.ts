@@ -62,17 +62,22 @@ export class SatellyteIntro {
   }
 
   getRandomPosition() {
+    // get viewbox properties of svg
+    const [vbX, vbY, vbW, vbH] = this.svg.getAttribute('viewBox')!.split(' ').map(vbVal => parseInt(vbVal, 10));
     const box = {
       padding: 20,
-      x: -200,
-      y: 0,
-      width: 300,
-      height: 200
+      x: vbX,
+      y: vbY,
+      width: vbW,
+      height: vbH
     }
 
+    // makes sure value is inside range [min, max]
+    const clamp = (val, min, max) => Math.min(Math.max(min, val), max);
+
     return {
-      x: box.padding + box.x + Math.random() * (box.width) - box.padding,
-      y: box.padding + box.y + Math.random() * (box.height) - box.padding
+      x: clamp(Math.random() * box.width,  box.padding, box.width  - box.padding),
+      y: clamp(Math.random() * box.height, box.padding, box.height - box.padding)
     }
   }
 }
