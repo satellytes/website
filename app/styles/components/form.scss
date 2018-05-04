@@ -47,6 +47,20 @@
   &.has-error::placeholder {
     color: sycolor(error);
   }
+
+  // overwrite autofill styles for webkit browsers
+  // http://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:active,
+  &:-webkit-autofill:focus {
+    -webkit-transition-delay: 99999s;
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 .sy-input[type="text"] {

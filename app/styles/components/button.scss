@@ -9,10 +9,16 @@
   font-size: 2rem;
   color: sycolor(dark);
   border : 2px solid transparent;
+  cursor: pointer;
 
-  &:hover, &:active {
+  &:hover, &:active, &:focus {
     background-color: sycolor(dark);
     color: sycolor(brand);
     border : 2px solid white;
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
   }
 }
