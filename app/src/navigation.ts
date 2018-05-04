@@ -60,7 +60,7 @@ export class Navigation {
     this._bar = this._element.querySelector('.sy-navigation__bar');
     this._barBlock = this._element.querySelector('.sy-navigation__bar-block');
 
-    const itemElements = this._element.querySelectorAll('.sy-navigation__item');
+    const itemElements = Array.from(this._element.querySelectorAll('.sy-navigation__item')) as HTMLElement[];
 
     itemElements.forEach( element => {
       const item = new NavigationItem(element);

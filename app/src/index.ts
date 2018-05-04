@@ -1,6 +1,7 @@
 import 'core-js';
 import 'whatwg-fetch';
-import 'what-input'
+import 'what-input';
+import 'intersection-observer';
 
 import { SatellyteIntro } from './intro';
 import { Navigation } from './navigation';
