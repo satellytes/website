@@ -15,11 +15,10 @@ class FormField {
   }
 
   onBlur = () => {
-    this._element.classList.remove('is-focused');
+    // async validation?
   }
 
   onFocus = () => {
-    this._element.classList.add('is-focused');
     this.clearError();
   }
 

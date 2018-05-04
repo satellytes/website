@@ -3,29 +3,27 @@
 }
 
 .sy-formfield {
-  display: flex;
+  position: relative;
   align-items: center;
   background-color: rgba(sycolor(black), 0.2);
   border-radius: 5px;
-  padding: 10px 20px;
   color: sycolor(white);
   border: 1px solid transparent;
 
   &.has-error {
     border: 1px solid sycolor(error);
   }
-
-  [data-whatinput='keyboard'] &.is-focused {
-    outline: 2px solid sycolor(brand);
-  }
-}
-
-.sy-formfield__input {
-  flex: 1 1 100%;
 }
 
 .sy-formfield__postfix {
-  flex: 1 0 auto;
+  position: absolute;
+  height: 100%;
+  width: 50px;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sy-input {
@@ -34,10 +32,11 @@
   border: none;
   background-color: transparent;
   color: inherit;
+  padding: 10px 20px;
   font-size: 1.5rem;
 
   &:focus {
-    outline: none;
+    outline: 2px solid sycolor(brand);
   }
 
   &::placeholder {
@@ -63,8 +62,10 @@
   }
 }
 
-.sy-input[type="text"] {
+.sy-input[type="text"],
+.sy-input[type="email"] {
   line-height: 30px;
+  padding-right: 50px;
 }
 
 textarea.sy-input {
