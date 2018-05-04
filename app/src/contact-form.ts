@@ -10,6 +10,8 @@ class FormField {
     this._input = this._element.querySelector('input, textarea') as HTMLInputElement;
     this._input.addEventListener('focus', this.onFocus);
     this._input.addEventListener('blur', this.onBlur);
+    // disable browser-side validation thats only needed for non-javascript users
+    this._input.removeAttribute('required');
   }
 
   onBlur = () => {
@@ -41,8 +43,20 @@ class FormField {
     this._input.classList.add('has-error');
   }
 
+  enable() {
+    this._input.removeAttribute('disabled');
+  }
+
+  disable() {
+    this._input.setAttribute('disabled', 'true');
+  }
+
   empty() {
     return this.value.length === 0;
+  }
+
+  clear() {
+    this._input.value = '';
   }
 
   get value() {
@@ -74,6 +88,19 @@ export class ContactForm {
     this.submit();
   }
 
+  onSubmitSuccess = response => {
+    this._formElement.classList.remove('is-submitting');
+    this._formElement.classList.add('is-successful');
+    this.formfields.forEach(field => field.clear());
+    this.enableInputs();
+  }
+
+  onSubmitError = error => {
+    this._formElement.classList.remove('is-submitting');
+    this.enableInputs();
+    alert(error);
+  }
+
   getData() {
     return this.formfields.reduce((acc, current: FormField) => {
       acc[current.name] = current.value
@@ -81,6 +108,15 @@ export class ContactForm {
     }, {})
   }
 
+  disableInputs() {
+    this.formfields.forEach(field => field.disable());
+    this._formElement.querySelector('button')!.setAttribute('disabled', 'true');
+  }
+
+  enableInputs() {
+    this.formfields.forEach(field => field.enable());
+    this._formElement.querySelector('button')!.removeAttribute('disabled');
+  }
 
   validate() {
     let result = true;
@@ -91,6 +127,11 @@ export class ContactForm {
 
   submit() {
     if(this.validate()){
+      // update UI
+      this.disableInputs();
+      this._formElement.classList.add('is-submitting');
+      this._formElement.classList.remove('is-successful');
+
       const data = this.getData();
 
       fetch("/", {
@@ -101,13 +142,8 @@ export class ContactForm {
           ...data
         })
       })
-      .then(() => alert("Success!"))
-      .catch(error => alert(error));
-
-    } else {
-      // console.log('has errpr')
+      .then(this.onSubmitSuccess)
+      .catch(this.onSubmitError);
     }
-
-
   }
 }

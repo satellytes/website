@@ -3,16 +3,16 @@
   <h2 class="sy-headline sy-headline--section">Contact</h2>
   <p>
       Nutzen Sie unser Kontaktformular oder schreiben Sie uns eine E-Mail an
-      <a class="sy-link" href='ping@satellytes.com'>ping@satellytes.com</a>.
+      <a class="sy-link" href='mailto:ping@satellytes.com'>ping@satellytes.com</a>.
   </p>
 
   <div class="sy-spacer"></div>
 
-  <form netlify id="sy-contact-form" name='sy-contact-form' netlify-honeypot="non-human-field">
+  <form netlify id="sy-contact-form" class="sy-contact-form" name='sy-contact-form' netlify-honeypot="non-human-field">
     <div class="sy-formgroup">
       <div class="sy-formfield">
         <div class="sy-formfield__input">
-          <input class="sy-input" type="text" placeholder="Your name" name="name"/>
+          <input class="sy-input" type="text" aria-label="Ihr Name" placeholder="Ihr Name" name="name" required aria-required="true" />
         </div>
         <div class="sy-formfield__postfix">
             <img src="../../assets/images/icon-person.svg"/>
@@ -23,7 +23,7 @@
     <div class="sy-formgroup">
       <div class="sy-formfield">
         <div class="sy-formfield__input">
-          <input class="sy-input" type="text" placeholder="Your email" name="email"/>
+          <input class="sy-input" type="email" aria-label="Ihre Email" placeholder="Ihre Email" name="email" required aria-required="true"/>
         </div>
 
         <div class="sy-formfield__postfix">
@@ -34,7 +34,7 @@
 
     <div class="sy-formgroup">
       <div class="sy-formfield">
-        <textarea class="sy-input"  placeholder="Your message to us" name="message"></textarea>
+        <textarea class="sy-input" aria-label="Ihre Nachricht an uns" placeholder="Ihre Nachricht an uns" name="message" required aria-required="true"></textarea>
       </div>
     </div>
 
@@ -42,5 +42,8 @@
     <button class="sy-button">Send</button>
     </div>
 
+    <div class="sy-contact-form__success-message">
+      <h3>Vielen Dank für Ihre Nachricht.<br>Wir werden uns mit Ihnen in Verbindung setzen.</h3>
+    </div>
   </form>
 </section>
