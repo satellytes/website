@@ -8,11 +8,11 @@ import { Navigation } from './navigation';
 import { ContactForm } from './contact-form';
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  const svg = document.querySelector('.sy-intro__svg') as SVGElement;
-  if(svg) {
-    const intro = new SatellyteIntro(svg);
+  const svgs = Array.from(document.querySelectorAll('.sy-intro__svg'));
+  svgs.forEach(svg => {
+    const intro = new SatellyteIntro(svg as SVGElement);
     intro.run();
-  }
+  });
 
   const navigationElement = document.querySelector('.sy-navigation');
   if(navigationElement) {
