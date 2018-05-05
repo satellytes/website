@@ -1,0 +1,61 @@
+.sy-contact-form {
+  position: relative;
+
+  &.is-submitting {
+    position: relative;
+
+    &::after {
+      content: url(../assets/images/load.png);
+      animation: 2s infinite linear rotate;
+      position: absolute;
+      top: calc(30% - 64px);
+      left: calc(50% - 64px);
+      width: 128px;
+      height: 128px;
+      transform-origin: center;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  &.is-successful {
+
+    .sy-contact-form__success-message {
+      display: flex;
+      animation: .5s ease hide forwards;
+      animation-delay: 3s;
+    }
+
+    @keyframes hide {
+      from {
+        opacity: 1;
+        z-index: 0;
+      }
+      to {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+}
+
+.sy-contact-form__success-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: sycolor(dark);
+  border: 2px solid sycolor(brand);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: none;
+}
