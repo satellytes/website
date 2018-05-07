@@ -69,6 +69,8 @@ class FormField {
 
 export class ContactForm {
   formfields: FormField[] = [];
+  submitTimeStamp: number = 0;
+  submitMinDuration: number = 1000;
 
   constructor(private _formElement: HTMLFormElement) {
     this.init();
@@ -88,10 +90,13 @@ export class ContactForm {
   }
 
   onSubmitSuccess = response => {
+    // make sure loading animation gets shown for at least submitMinDuration milliseconds
+    // retry in next frame if not enough time has passed
+    if ((Date.now() - this.submitTimeStamp) < this.submitMinDuration) {
+      return window.requestAnimationFrame(this.onSubmitSuccess.bind(this, response));
+    }
     this._formElement.classList.remove('is-submitting');
     this._formElement.classList.add('is-successful');
-    this.formfields.forEach(field => field.clear());
-    this.enableInputs();
   }
 
   onSubmitError = error => {
@@ -129,7 +134,7 @@ export class ContactForm {
       // update UI
       this.disableInputs();
       this._formElement.classList.add('is-submitting');
-      this._formElement.classList.remove('is-successful');
+      this.submitTimeStamp = Date.now();
 
       const data = this.getData();
 
