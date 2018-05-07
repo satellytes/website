@@ -26,7 +26,7 @@ class Star {
     element.setAttribute('fill','#ffffff');
     // element.setAttribute('fill','#ff0000');
 
-    const radius = 0.5 + Math.random()/2;
+    const radius = 0.5 - Math.random() * 0.5;
 
     element.setAttribute('cx', this.point.x);
     element.setAttribute('cy', this.point.y);
