@@ -2,7 +2,7 @@ const STARS = [
   {x: 10, y: 190},
   {x: 50, y: 150},
   {x: 100, y: 170},
-  {x: 110, y: 185},
+  {x: 99, y: 185},
   {x: 80, y: 175},
   {x: 75, y: 195},
   {x: 30, y: 130},
@@ -65,19 +65,16 @@ export class SatellyteIntro {
     // get viewbox properties of svg
     const [vbX, vbY, vbW, vbH] = this.svg.getAttribute('viewBox')!.split(' ').map(vbVal => parseInt(vbVal, 10));
     const box = {
-      padding: 20,
+      padding: 10,
       x: vbX,
       y: vbY,
       width: vbW,
       height: vbH
     }
 
-    // makes sure value is inside range [min, max]
-    const clamp = (val, min, max) => Math.min(Math.max(min, val), max);
-
     return {
-      x: clamp(Math.random() * box.width,  box.padding, box.width  - box.padding),
-      y: clamp(Math.random() * box.height, box.padding, box.height - box.padding)
+      x: box.padding + Math.random() * (box.width - 2 * box.padding),
+      y: box.padding + Math.random() * (box.height - 2 * box.padding)
     }
   }
 }
