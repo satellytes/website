@@ -1,0 +1,14 @@
+.sy-legal {
+
+  .sy-section__content + .sy-section__content {
+    margin-top: 30px;
+  }
+
+  .sy-section__content:last-child {
+    margin-bottom: 50px;
+  }
+
+  .sy-headline {
+    margin-bottom: 4px;
+  }
+}
