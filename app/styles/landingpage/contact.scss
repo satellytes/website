@@ -48,4 +48,13 @@
       }
     }
   }
+
+  .checkmark-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../assets/images/checkmark.png);
+    background-size: contain;
+    margin-right: 4px;
+  }
 }
