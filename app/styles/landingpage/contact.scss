@@ -6,49 +6,46 @@
 .sy-contact-form {
   position: relative;
 
+  .sy-contact-form__submitt-button {
+    position: relative;
+    padding-left: 18px;
+    text-align: left;
+
+    &[disabled] {
+      opacity: 1;
+    }
+
+    &.reset::after {
+      transition: none;
+      transform: translateX(-100%);
+    }
+  }
+
   &.is-submitting {
     position: relative;
 
-    &::after {
-      content: url(../assets/images/load.png);
-      animation: 2s infinite linear rotate;
-      position: absolute;
-      top: calc(30% - 64px);
-      left: calc(50% - 64px);
-      width: 128px;
-      height: 128px;
-      transform-origin: center;
-    }
+    .sy-contact-form__submitt-button {
 
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
+      &::before {
+        background-color: #52cc8f;
       }
-      to {
-        transform: rotate(360deg);
+
+      &::after {
+        transform: translateX(0);
+        background-color: sycolor(success);
+        transition: transform 2s ease;
       }
     }
   }
 
   &.is-successful {
 
-    .sy-contact-form__success-message {
-      display: flex;
+    .sy-contact-form__submitt-button {
+
+      &::after {
+        transform: translateX(0);
+        background-color: sycolor(success);
+      }
     }
   }
-}
-
-.sy-contact-form__success-message {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: sycolor(dark);
-  border: 1px solid sycolor(brand);
-  border-radius: 4px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  display: none;
 }
