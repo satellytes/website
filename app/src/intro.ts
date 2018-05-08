@@ -45,8 +45,50 @@ class TwinkleStar {
   }
 }
 
+class Swoosh {
+  private element: PIXI.Graphics;
+  private visible: boolean;
+  private appearTimeStamp: number;
+  private MAX_APPERANCE: number = 600;
+
+  constructor(private stage: PIXI.Container, private position: PIXI.Point) {
+    this.element = new PIXI.Graphics();
+    this.element.beginFill(0xffffff);
+    this.element.drawStar(0, 0, 13, 10, 2);
+    this.element.endFill();
+    this.element.x = position.x;
+    this.element.y = position.y;
+    this.element.scale = new PIXI.Point(0, 0);
+
+    this.visible = false;
+    this.appearTimeStamp = 0;
+
+    this.stage.addChild(this.element);
+  }
+
+  update(delta) {
+    if (!this.visible && Math.random() > 0.999) {
+      this.visible = true;
+      this.appearTimeStamp = Date.now();
+      let initScale = Math.random() * 0.8;
+      this.element.scale = new PIXI.Point(initScale, initScale);
+    }
+    if (this.visible) {
+      this.element.x += 2 * Math.cos(Date.now() / 1000);
+      this.element.y += 2 * Math.sin(Date.now() / 1000);
+      this.element.scale.x += 0.01;
+      this.element.scale.y += 0.01;
+    }
+    if (Date.now() - this.appearTimeStamp > this.MAX_APPERANCE) {
+      this.visible = false;
+      this.element.scale = new PIXI.Point(0, 0);
+    }
+  }
+}
+
 export class SatellyteIntro {
   private stars: TwinkleStar[] = [];
+  private swooshs: Swoosh[] = [];
   private app: PIXI.Application;
 
   constructor(private wrapper: HTMLElement) { }
@@ -62,6 +104,7 @@ export class SatellyteIntro {
 
     this.wrapper.appendChild(this.app.view);
     this.stars = this.createRandomStars();
+    this.swooshs = this.createRandomSwooshs();
     this.app.ticker.add(this.update.bind(this));
   }
 
@@ -69,6 +112,9 @@ export class SatellyteIntro {
     for (let star of this.stars) {
       star.update(delta);
       this.contain(star);
+    }
+    for (let swoosh of this.swooshs) {
+      swoosh.update(delta);
     }
   }
 
@@ -86,10 +132,18 @@ export class SatellyteIntro {
   }
 
   createRandomStars(count: number = 50): TwinkleStar[] {
-    let stars: any[] = [];
+    let stars: TwinkleStar[] = [];
     for (let i = 0; i < count; i++) {
       stars.push(new TwinkleStar(this.app.stage, this.getRandomPosition()));
     }
     return stars;
+  }
+
+  createRandomSwooshs(count: number = 10): Swoosh[] {
+    let swooshs: Swoosh[] = [];
+    for (let i = 0; i < count; i++) {
+      swooshs.push(new Swoosh(this.app.stage, this.getRandomPosition()));
+    }
+    return swooshs;
   }
 }
