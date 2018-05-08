@@ -11,8 +11,8 @@
   background-color: transparent;
 
   &:hover, &:active, &:focus {
-    &::after {
-      transform: translateX(0);
+    &::before {
+      background-color: #80EAFF;
     }
   }
 
@@ -34,6 +34,7 @@
   &::before {
     background-color: sycolor(brand);
     z-index: -2;
+    transition: background-color .2s ease;
   }
 
   &::after {
