@@ -8,11 +8,6 @@
   background-color: rgba(sycolor(black), 0.2);
   border-radius: 5px;
   color: sycolor(white);
-  border: 1px solid transparent;
-
-  &.has-error {
-    border: 1px solid sycolor(error);
-  }
 }
 
 .sy-formfield__postfix {
@@ -32,11 +27,14 @@
   border: none;
   background-color: transparent;
   color: inherit;
-  padding: 10px 20px;
+  padding: 10px 18px;
   font-size: 1.5rem;
+  border-radius: 5px;
+  transition: box-shadow .2s ease;
 
   &:focus {
-    outline: 2px solid sycolor(brand);
+    box-shadow: 0 0 0 2px sycolor(brand);
+    outline: none;
   }
 
   &::placeholder {
@@ -47,13 +45,8 @@
     color: sycolor(error);
   }
 
-  // overwrite autofill styles for webkit browsers
-  // http://webagility.com/posts/the-ultimate-list-of-hacks-for-chromes-forced-yellow-background-on-autocompleted-inputs
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:active,
-  &:-webkit-autofill:focus {
-    -webkit-transition-delay: 99999s;
+  &.has-error {
+    box-shadow: 0 0 0 1px sycolor(error);
   }
 
   &[disabled] {

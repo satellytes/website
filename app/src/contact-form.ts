@@ -70,10 +70,12 @@ class FormField {
 export class ContactForm {
   formfields: FormField[] = [];
   submitTimeStamp: number = 0;
-  submitMinDuration: number = 1000;
+  submitMinDuration: number = 2000;
+  submitButton: HTMLButtonElement;
 
   constructor(private _formElement: HTMLFormElement) {
     this.init();
+    this.submitButton = _formElement.querySelector('button') as HTMLButtonElement;
   }
 
   init() {
@@ -97,6 +99,7 @@ export class ContactForm {
     }
     this._formElement.classList.remove('is-submitting');
     this._formElement.classList.add('is-successful');
+    this.submitButton.innerHTML = '✔ Sent';
   }
 
   onSubmitError = error => {
@@ -131,23 +134,38 @@ export class ContactForm {
 
   submit() {
     if(this.validate()){
-      // update UI
       this.disableInputs();
-      this._formElement.classList.add('is-submitting');
-      this.submitTimeStamp = Date.now();
+      this.resetButtonState()
+      .then(() => {
+        this._formElement.classList.add('is-submitting');
+        this.submitTimeStamp = Date.now();
+        this.submitButton.innerHTML = 'Sending ...';
 
-      const data = this.getData();
+        const data = this.getData();
 
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "sy-contact-form",
-          ...data
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({
+            "form-name": "sy-contact-form",
+            ...data
+          })
         })
-      })
-      .then(this.onSubmitSuccess)
-      .catch(this.onSubmitError);
+        .then(this.onSubmitSuccess)
+        .catch(this.onSubmitError);
+      });
     }
+  }
+
+  // this needs to get at least one tick of cpu-time to act on the
+  // classlist of the button correctly, hence the timeout and promise
+  resetButtonState() {
+    return new Promise(resolve => {
+      this.submitButton.classList.add('reset');
+      window.setTimeout(() => {
+        this.submitButton.classList.remove('reset');
+        resolve();
+      }, 1);
+    });
   }
 }

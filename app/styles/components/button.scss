@@ -1,24 +1,45 @@
 .sy-button {
   display: block;
   width: 100%;
-  height: 50px;
   line-height:  50px;
-  background-color: sycolor(brand);
   border: none;
   border-radius: 5px;
   font-size: 2rem;
   color: sycolor(dark);
-  border : 2px solid transparent;
   cursor: pointer;
+  overflow: hidden;
+  background-color: transparent;
 
   &:hover, &:active, &:focus {
-    background-color: sycolor(dark);
-    color: sycolor(brand);
-    border : 2px solid white;
+    &::after {
+      transform: translateX(0);
+    }
   }
 
   &[disabled] {
     opacity: 0.5;
     pointer-events: none;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  &::before {
+    background-color: sycolor(brand);
+    z-index: -2;
+  }
+
+  &::after {
+    background-color: #B3F2FF;
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    z-index: -1;
   }
 }

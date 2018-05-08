@@ -9,6 +9,9 @@
   <div class="sy-spacer"></div>
 
   <form netlify id="sy-contact-form" class="sy-contact-form" name='sy-contact-form' netlify-honeypot="non-human-field">
+    <div style="visibility:hidden;width:1px;height:1px;">
+      <label>Don’t fill this out if you're human: <input name="non-human-field"></label>
+    </div>
     <div class="sy-formgroup">
       <div class="sy-formfield">
         <div class="sy-formfield__input">
@@ -23,7 +26,7 @@
     <div class="sy-formgroup">
       <div class="sy-formfield">
         <div class="sy-formfield__input">
-          <input class="sy-input" type="email" aria-label="Ihre Email" placeholder="Ihre Email" name="email" required aria-required="true"/>
+          <input class="sy-input" type="email" aria-label="Ihre E-Mail" placeholder="Ihre E-Mail" name="email" required aria-required="true" autocomplete="off" />
         </div>
 
         <div class="sy-formfield__postfix">
@@ -39,11 +42,8 @@
     </div>
 
     <div class="sy-formgroup">
-    <button class="sy-button">Send</button>
+      <button class="sy-button sy-contact-form__submitt-button">Send</button>
     </div>
-
-    <div class="sy-contact-form__success-message">
-      <h3>Vielen Dank für Ihre Nachricht.<br>Wir werden uns mit Ihnen in Verbindung setzen.</h3>
-    </div>
+    <div data-netlify-recaptcha></div>
   </form>
 </section>
