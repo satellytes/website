@@ -5,6 +5,18 @@
   margin-bottom: -150px; // bleed in following content
 }
 
+.sy-intro-wrapper {
+  position: relative;
+  height: 100%;
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}
+
 .sy-intro__compact {
 
   display: block;

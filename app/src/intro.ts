@@ -1,80 +1,95 @@
-const STARS = [
-  {x: 10, y: 190},
-  {x: 50, y: 150},
-  {x: 100, y: 170},
-  {x: 99, y: 185},
-  {x: 80, y: 175},
-  {x: 75, y: 195},
-  {x: 30, y: 130},
-  {x: 45, y: 180},
-  {x: 15, y: 97}
-]
+import * as PIXI from 'pixi.js'
 
+class TwinkleStar {
+  private element: PIXI.Graphics;
+  private scale: PIXI.Point;
+  private growing: boolean;
+  private scaleSpeed: number;
+  private MAX_SCALE = 1.7;
+  private MIN_SCALE = 0;
 
-class Star {
-  constructor(private _element: any, private point) {
-    this.init();
+  constructor(private stage: PIXI.Container, private position: PIXI.Point) {
+    this.element = new PIXI.Graphics();
+    this.element.beginFill(0xffffff);
+    this.element.drawStar(0, 0, 4, 2, 0.3);
+    this.element.endFill();
+    this.element.x = position.x;
+    this.element.y = position.y;
+
+    this.growing = true;
+    this.scaleSpeed = Math.random();
+    let initScale = this.MIN_SCALE;
+    this.scale = new PIXI.Point(initScale, initScale);
+
+    // add element to stage
+    this.stage.addChild(this.element);
   }
 
-  get element() {
-    return this._element;
+  update(delta) {
+    this.element.x += 0.125 - Math.random() / 4;
+    this.element.y += 0.125 - Math.random() / 4;
+    this.element.scale = this.getNextScale();
+    if (this.element.scale.x > this.MAX_SCALE) {
+      this.growing = false;
+    }
+    if (this.element.scale.x < this.MIN_SCALE) {
+      this.growing = true;
+    }
   }
 
-  init() {
-    const {element} = this;
-    element.style.animationDelay = 15 * Math.random() + "s";
-    element.setAttribute('fill','#ffffff');
-    // element.setAttribute('fill','#ff0000');
-
-    const radius = 0.5 - Math.random() * 0.5;
-
-    element.setAttribute('cx', this.point.x);
-    element.setAttribute('cy', this.point.y);
-    element.setAttribute('r', radius);
+  getNextScale(): PIXI.Point {
+    let scaleStep = this.growing ? 0.01 : -0.01;
+    let x = this.scale.x += scaleStep * this.scaleSpeed;
+    let y = this.scale.y += scaleStep * this.scaleSpeed;
+    return new PIXI.Point(x, y);
   }
 }
 
 export class SatellyteIntro {
-  private path: any;
-  private namespaceURI: any;
+  private stars: TwinkleStar[] = [];
+  private app: PIXI.Application;
 
-  constructor(private svg: SVGElement) {
-    this.path = svg.querySelector('.satellyte__path') as SVGPathElement;
-    this.namespaceURI = svg.namespaceURI;
-  }
+  constructor(private wrapper: HTMLElement) { }
 
   run() {
-    const starsContainer = this.svg.querySelector('.satellyte__stars');
-    const starPoints = [...STARS] as any;
-    // create some random additional points to the
-    // fixed set of stars we have already defined by hand
-    for (let i = 0; i < 50; i++) {
-      starPoints.push(this.getRandomPosition())
-    }
+    this.app = new PIXI.Application({
+      width: this.wrapper.offsetWidth,
+      height: this.wrapper.offsetHeight,
+      antialias: true,
+      transparent: true,
+      resolution: 1
+    });
 
-    for (let i = 0; i < starPoints.length; i++) {
-      const circle = document.createElementNS(this.namespaceURI,'circle');
-      const point = starPoints[i];
-      const star = new Star(circle, point);
-      starsContainer!.appendChild(star.element);
-    }
-
+    this.wrapper.appendChild(this.app.view);
+    this.stars = this.createRandomStars();
+    this.app.ticker.add(this.update.bind(this));
   }
 
-  getRandomPosition() {
-    // get viewbox properties of svg
-    const [vbX, vbY, vbW, vbH] = this.svg.getAttribute('viewBox')!.split(' ').map(vbVal => parseInt(vbVal, 10));
-    const box = {
-      padding: 10,
-      x: vbX,
-      y: vbY,
-      width: vbW,
-      height: vbH
+  update(delta) {
+    for (let star of this.stars) {
+      star.update(delta);
+      this.contain(star);
     }
+  }
 
-    return {
-      x: box.padding + Math.random() * (box.width - 2 * box.padding),
-      y: box.padding + Math.random() * (box.height - 2 * box.padding)
+  getRandomPosition(): PIXI.Point {
+    return new PIXI.Point(
+      Math.random() * this.wrapper.offsetWidth,
+      Math.random() * this.wrapper.offsetHeight
+    );
+  }
+
+  // possibly changes coordinates of star (in place!)
+  contain(star) {
+    star.element.x = star.element.x % this.wrapper.offsetWidth;
+    star.element.y = star.element.y % this.wrapper.offsetHeight;
+  }
+
+  createRandomStars(count: number = 50): TwinkleStar[] {
+    let stars: any[] = [];
+    for (let i = 0; i < count; i++) {
+      stars.push(new TwinkleStar(this.app.stage, this.getRandomPosition()));
     }
+    return stars;
   }
 }
