@@ -26,7 +26,9 @@
     <div class="sy-formgroup">
       <div class="sy-formfield">
         <div class="sy-formfield__input">
-          <input class="sy-input" type="email" aria-label="Ihre E-Mail" placeholder="Ihre E-Mail" name="email" required aria-required="true" />
+          <input class="sy-input" type="email" aria-label="Ihre E-Mail"
+                 placeholder="Ihre E-Mail" name="email" required aria-required="true"
+                 pattern="^[^\\s]+@[^\\s]+\\.[^\\s]{2,63}$" />
         </div>
 
         <div class="sy-formfield__postfix">
