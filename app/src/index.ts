@@ -2,6 +2,8 @@ import 'core-js';
 import 'whatwg-fetch';
 import 'what-input';
 
+const smoothScroll = require('smoothscroll');
+
 import { SatellyteIntro } from './intro';
 import { Navigation } from './navigation';
 import { ContactForm } from './contact-form';
@@ -30,5 +32,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     map.show();
   }
 
+  // setup smooth scroll
+  Array.from(document.querySelectorAll('.sy-navigation__item')).forEach(link => {
+    link.addEventListener('click', event => {
+      const target = document.querySelector(`${link.getAttribute('href')!.replace('/', '')}`) as HTMLElement;
+      if (target) {
+        event.preventDefault();
+        // remove 70px from the top to make sure headline is visible below navigation bar
+        smoothScroll(target.offsetTop - 70);
+      }
+    });
+  });
 });
-
