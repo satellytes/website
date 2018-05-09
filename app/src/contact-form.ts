@@ -16,10 +16,12 @@ class FormField {
 
   onBlur = () => {
     // async validation?
+    this._element.classList.remove('sy-formfield--focused');
   }
 
   onFocus = () => {
     this.clearError();
+    this._element.classList.add('sy-formfield--focused');
   }
 
   validate() {

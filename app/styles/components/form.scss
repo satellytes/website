@@ -10,6 +10,12 @@
   color: sycolor(white);
 }
 
+.sy-formfield--focused {
+  .sy-formfield__postfix {
+    transform: scale(1.3);
+  }
+}
+
 .sy-formfield__postfix {
   position: absolute;
   height: 100%;
@@ -19,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform .2s ease-out;
 
   img {
     width: 22px;
