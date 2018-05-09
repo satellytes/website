@@ -8,6 +8,7 @@ import { SatellyteIntro } from './intro';
 import { Navigation } from './navigation';
 import { ContactForm } from './contact-form';
 import { CustomMap } from './office-map';
+import { ScrollEffects } from './scroll-effects';
 
 document.addEventListener("DOMContentLoaded", function(event) {
   const svgs = Array.from(document.querySelectorAll('.sy-intro__svg'));
@@ -43,4 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     });
   });
+
+  // setup scroll effects
+  const scrollEffects = new ScrollEffects(document.documentElement);
 });
