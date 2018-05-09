@@ -36,9 +36,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // setup smooth scroll
   Array.from(document.querySelectorAll('.sy-navigation__item')).forEach(link => {
     link.addEventListener('click', event => {
-      const target = document.querySelector(`${link.getAttribute('href')!.replace('/', '')}`) as HTMLElement;
+      const href = link.getAttribute('href');
+      const sanitizedLink = href!.replace('/', '');
+      const target = document.querySelector(`${sanitizedLink}`) as HTMLElement;
       if (target) {
         event.preventDefault();
+        window.history.replaceState({}, sanitizedLink, href);
         // remove 70px from the top to make sure headline is visible below navigation bar
         smoothScroll(target.offsetTop - 70);
       }
