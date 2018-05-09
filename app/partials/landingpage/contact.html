@@ -1,50 +1,53 @@
 <section class="sy-section">
   <a name="sy-contact"></a>
   <h2 class="sy-headline sy-headline--section">Contact</h2>
-  <p>
-      Nutzen Sie unser Kontaktformular oder schreiben Sie uns eine E-Mail an
-      <a class="sy-link" href='mailto:ping@satellytes.com'>ping@satellytes.com</a>.
-  </p>
 
-  <div class="sy-spacer"></div>
+  <div class="sy-section__content">
+    <p>
+        Nutzen Sie unser Kontaktformular oder schreiben Sie uns eine E-Mail an
+        <a class="sy-link" href='mailto:ping@satellytes.com'>ping@satellytes.com</a>.
+    </p>
 
-  <form netlify id="sy-contact-form" class="sy-contact-form" name='sy-contact-form' netlify-honeypot="non-human-field">
-    <div style="visibility:hidden;width:1px;height:1px;">
-      <label>Don’t fill this out if you're human: <input name="non-human-field"></label>
-    </div>
-    <div class="sy-formgroup">
-      <div class="sy-formfield">
-        <div class="sy-formfield__input">
-          <input class="sy-input" type="text" aria-label="Ihr Name" placeholder="Ihr Name" name="name" required aria-required="true" />
-        </div>
-        <div class="sy-formfield__postfix">
-            <img src="../../assets/images/icon-person.png"/>
+    <div class="sy-spacer"></div>
+
+    <form netlify id="sy-contact-form" class="sy-contact-form" name='sy-contact-form' netlify-honeypot="non-human-field">
+      <div style="visibility:hidden;width:1px;height:1px;">
+        <label>Don’t fill this out if you're human: <input name="non-human-field"></label>
+      </div>
+      <div class="sy-formgroup">
+        <div class="sy-formfield">
+          <div class="sy-formfield__input">
+            <input class="sy-input" type="text" aria-label="Ihr Name" placeholder="Ihr Name" name="name" required aria-required="true" />
+          </div>
+          <div class="sy-formfield__postfix">
+              <img src="../../assets/images/icon-person.png"/>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="sy-formgroup">
-      <div class="sy-formfield">
-        <div class="sy-formfield__input">
-          <input class="sy-input" type="email" aria-label="Ihre E-Mail"
-                 placeholder="Ihre E-Mail" name="email" required aria-required="true"
-                 pattern="^[^\\s]+@[^\\s]+\\.[^\\s]{2,63}$" />
-        </div>
+      <div class="sy-formgroup">
+        <div class="sy-formfield">
+          <div class="sy-formfield__input">
+            <input class="sy-input" type="email" aria-label="Ihre E-Mail"
+                  placeholder="Ihre E-Mail" name="email" required aria-required="true"
+                  pattern="^[^\\s]+@[^\\s]+\\.[^\\s]{2,63}$" />
+          </div>
 
-        <div class="sy-formfield__postfix">
-          <img src="../../assets/images/icon-mail.png"/>
+          <div class="sy-formfield__postfix">
+            <img src="../../assets/images/icon-mail.png"/>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="sy-formgroup">
-      <div class="sy-formfield">
-        <textarea class="sy-input" aria-label="Ihre Nachricht an uns" placeholder="Ihre Nachricht an uns" name="message" required aria-required="true"></textarea>
+      <div class="sy-formgroup">
+        <div class="sy-formfield">
+          <textarea class="sy-input" aria-label="Ihre Nachricht an uns" placeholder="Ihre Nachricht an uns" name="message" required aria-required="true"></textarea>
+        </div>
       </div>
-    </div>
 
-    <div class="sy-formgroup">
-      <button class="sy-button sy-contact-form__submitt-button">Send</button>
+      <div class="sy-formgroup">
+        <button class="sy-button sy-contact-form__submitt-button">Send</button>
+      </div>
     </div>
   </form>
 </section>
