@@ -42,7 +42,8 @@ export class Navigation {
   constructor(private _element) {
     this.init();
     this.registerScrollListener();
-    window.scroll();
+    // fake a minimal scroll to activate current item
+    window.scroll(window.scrollX, window.scrollY - 1);
   }
 
   handleMouseLeave = () => {
@@ -75,9 +76,6 @@ export class Navigation {
   activate(item){
     if (!item) {
       return this.hideBar();
-    }
-    if (this._currentItem === item) {
-      return;
     }
 
     if(this._currentItem) {
