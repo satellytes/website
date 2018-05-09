@@ -14,12 +14,18 @@ class NavigationItem extends EventEmitter {
     this.emit('preactivate', this);
   }
 
+  handleMouseClick = () => {
+    this.emit('activate', this);
+  }
+
   init() {
     this._element.addEventListener('mouseover', this.handleMouseOver);
+    this._element.addEventListener('click', this.handleMouseClick);
   }
 
   destroy() {
     this._element.removeEventListener('mouseover', this.handleMouseOver);
+    this._element.removeEventListener('click', this.handleMouseClick);
   }
 
   activate() {
@@ -38,6 +44,11 @@ export class Navigation {
   private _container;
   private _currentItem;
   private _items: NavigationItem[] = [];
+
+  // flag to determine whether to update the navigation-bar on scroll-events
+  // if user clicked on a navigation link we want the page to scroll
+  // to that section without updating the navigation on the way
+  private navigating: boolean = false;
 
   constructor(private _element) {
     this.init();
@@ -64,12 +75,23 @@ export class Navigation {
     itemElements.forEach( element => {
       const item = new NavigationItem(element);
       item.on('preactivate', this.preactivateItem);
+      item.on('activate', this.activateItem);
       this._items.push(item);
     });
   }
 
   preactivateItem = (item) => {
     this.moveBarToItem(item);
+  }
+
+  activateItem = (item) => {
+    this.navigating = true;
+    this.activate(item);
+    // tell scroll-listener to listen again after 500ms
+    // (default duration of smooth scroll)
+    window.setTimeout(() => {
+      this.navigating = false;
+    }, 500);
   }
 
   // show an item in the navigation bar as active
@@ -119,16 +141,19 @@ export class Navigation {
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const section = sections.find(section => {
-            const rect = section.getBoundingClientRect();
-            // return first section whose top is visible or has its bottom still below fold
-            return rect.top > 0 && rect.top < window.innerHeight || rect.bottom > window.innerHeight;
-          });
+          // only update navigation bar if this scroll was not initiated by a click on a navigation item
+          if (!this.navigating) {
+            const section = sections.find(section => {
+              const rect = section.getBoundingClientRect();
+              // return first section whose top is visible or has its bottom still below fold
+              return rect.top > 0 && rect.top < window.innerHeight || rect.bottom > window.innerHeight;
+            });
 
-          if (section) {
-            const itemElement = this._element.querySelector(`[href$='#${section.id}']`);
-            const item = this._items.find(item => item.element === itemElement);
-            this.activate(item);
+            if (section) {
+              const itemElement = this._element.querySelector(`[href$='#${section.id}']`);
+              const item = this._items.find(item => item.element === itemElement);
+              this.activate(item);
+            }
           }
 
           ticking = false;
