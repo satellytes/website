@@ -41,11 +41,8 @@ export class Navigation {
 
   constructor(private _element) {
     this.init();
-    this.initObserver();
-  }
-
-  start() {
-    this.activate(this._items[0]);
+    this.registerScrollListener();
+    window.scroll();
   }
 
   handleMouseLeave = () => {
@@ -53,6 +50,7 @@ export class Navigation {
   }
 
   // TODO: cleanup, destroy
+  // felix: destroy necessary on mutli-page-site?
   init() {
     this._element.addEventListener('mouseleave', this.handleMouseLeave);
 
@@ -66,7 +64,7 @@ export class Navigation {
       const item = new NavigationItem(element);
       item.on('preactivate', this.preactivateItem);
       this._items.push(item);
-    })
+    });
   }
 
   preactivateItem = (item) => {
@@ -74,9 +72,11 @@ export class Navigation {
   }
 
   // show an item in the navigation bar as active
-  // TODO: preactivate to simulate hover
   activate(item){
-    if(this._currentItem === item) {
+    if (!item) {
+      return this.hideBar();
+    }
+    if (this._currentItem === item) {
       return;
     }
 
@@ -97,37 +97,46 @@ export class Navigation {
     const x = (itemBounding.x + itemBounding.width/2) + 'px';
     this._bar.style.transform = `translateX(${x})`;
     this._barBlock.style.transform = `translate(-50%) scale(${scale}, 1)`;
+    this.showBar();
   }
 
+  hideBar() {
+    this._barBlock.style.opacity = '0';
+  }
 
- /** Initialize a IntersectionObserver to monitor
-  * for content being shown in the viewport
-  * to activate the according item in the sticky navigation bar
-   */
-  initObserver() {
+  showBar() {
+    this._barBlock.style.opacity = '1';
+  }
+
+  registerScrollListener() {
     const sectionNames = ['sy-what', 'sy-why', 'sy-meet', 'sy-contact'];
-    const sections = sectionNames.map(name => document.querySelector(`a[name='${name}']` ));
-    const options = {
-      // 0.5 = The callback is fired when 50% of the element is visible
-      // We can add more values to the array, like 0.25, 0.75 or 1.0
-      threshold: [0.5]
-    };
+    // - find corresponding sections,
+    // - get rid of nulls and undefineds,
+    // - order by appearance on page from top to bottom
+    const sections = (sectionNames.map(name => document.querySelector(`#${name}`)) as HTMLElement[])
+    .filter(section => section)
+    .sort((a, b) => a.offsetTop - b.offsetTop);
 
-    // Instantiate the IntersectionObserver class
-    const observer = new IntersectionObserver((entries, observer) => {
-      // This is the callback.
-      const entry = entries[0];
-      if(entry.isIntersecting) {
-        const target = entry.target;
-        const targetAnchor = target.getAttribute('name');
-        const itemElement = this._element.querySelector(`[href='#${targetAnchor}']`);
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const section = sections.find(section => {
+            const rect = section.getBoundingClientRect();
+            // return first section whose top is visible or has its bottom still below fold
+            return rect.top > 0 && rect.top < window.innerHeight || rect.bottom > window.innerHeight;
+          });
 
-        const item = this._items.find(item => item.element === itemElement);
-        this.activate(item);
+          if (section) {
+            const itemElement = this._element.querySelector(`[href$='#${section.id}']`);
+            const item = this._items.find(item => item.element === itemElement);
+            this.activate(item);
+          }
+
+          ticking = false;
+        });
       }
-      // End of callback. Pass the options object as the second argument.
-    }, options);
-
-    sections.forEach((item) => observer.observe(item as Element));
+      ticking = true;
+    });
   }
 }
