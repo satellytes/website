@@ -43,7 +43,7 @@ export class Navigation {
     this.init();
     this.registerScrollListener();
     // fake a minimal scroll to activate current item
-    window.scroll(window.scrollX, window.scrollY - 1);
+    window.scroll(window.scrollX, window.scrollY + 1);
   }
 
   handleMouseLeave = () => {
