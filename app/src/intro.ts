@@ -17,8 +17,11 @@ export class SatellyteIntro {
     });
     this.wrapper.appendChild(this.app.view);
 
+    // calculate twinkleStar count: 1 star for every 10000 square-pixels
+    const twinkleStarCount = this.wrapper.clientWidth * this.wrapper.clientHeight / 10000;
+
     // add twinkle stars
-    this.spaceObjects.push(...this.createRandomStars());
+    this.spaceObjects.push(...this.createRandomStars(twinkleStarCount));
     // add shooting stars
     this.spaceObjects.push(...this.createRandomSwooshs());
     // add a single satellite

@@ -35,10 +35,6 @@ export class TwinkleStar extends SpaceObject {
   }
 
   update(delta) {
-    // slight random movement to simulate flickering
-    this.element.x += 0.125 - Math.random() / 4;
-    this.element.y += 0.125 - Math.random() / 4;
-
     this.element.scale = this.getNextScale();
     if (this.element.scale.x > this.MAX_SCALE) {
       this.growing = false;
