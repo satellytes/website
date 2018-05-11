@@ -72,6 +72,17 @@ module.exports = {
         use: {
           loader: 'html-loader?interpolate'
         }
+      },
+      // FONTS
+      {
+        test: /\.(woff|woff2)$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 50000,
+            name: "[path][name].[ext]",
+          }
+        }
       }
     ]
   },
