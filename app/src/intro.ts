@@ -1,80 +1,77 @@
-const STARS = [
-  {x: 10, y: 190},
-  {x: 50, y: 150},
-  {x: 100, y: 170},
-  {x: 99, y: 185},
-  {x: 80, y: 175},
-  {x: 75, y: 195},
-  {x: 30, y: 130},
-  {x: 45, y: 180},
-  {x: 15, y: 97}
-]
-
-
-class Star {
-  constructor(private _element: any, private point) {
-    this.init();
-  }
-
-  get element() {
-    return this._element;
-  }
-
-  init() {
-    const {element} = this;
-    element.style.animationDelay = 15 * Math.random() + "s";
-    element.setAttribute('fill','#ffffff');
-    // element.setAttribute('fill','#ff0000');
-
-    const radius = 0.5 - Math.random() * 0.5;
-
-    element.setAttribute('cx', this.point.x);
-    element.setAttribute('cy', this.point.y);
-    element.setAttribute('r', radius);
-  }
-}
+import * as PIXI from 'pixi.js'
+import { SpaceObject, TwinkleStar, Swoosh, Satellite } from './intro/SpaceObjects';
 
 export class SatellyteIntro {
-  private path: any;
-  private namespaceURI: any;
+  private spaceObjects: SpaceObject[] = [];
+  private app: PIXI.Application;
 
-  constructor(private svg: SVGElement) {
-    this.path = svg.querySelector('.satellyte__path') as SVGPathElement;
-    this.namespaceURI = svg.namespaceURI;
-  }
+  constructor(private wrapper: HTMLElement) { }
 
   run() {
-    const starsContainer = this.svg.querySelector('.satellyte__stars');
-    const starPoints = [...STARS] as any;
-    // create some random additional points to the
-    // fixed set of stars we have already defined by hand
-    for (let i = 0; i < 50; i++) {
-      starPoints.push(this.getRandomPosition())
-    }
+    this.app = new PIXI.Application({
+      width: this.wrapper.clientWidth,
+      height: this.wrapper.clientHeight,
+      antialias: true,
+      transparent: true,
+      resolution: 1
+    });
+    this.wrapper.appendChild(this.app.view);
 
-    for (let i = 0; i < starPoints.length; i++) {
-      const circle = document.createElementNS(this.namespaceURI,'circle');
-      const point = starPoints[i];
-      const star = new Star(circle, point);
-      starsContainer!.appendChild(star.element);
-    }
+    // add twinkle stars
+    this.spaceObjects.push(...this.createRandomStars());
+    // add shooting stars
+    this.spaceObjects.push(...this.createRandomSwooshs());
+    // add a single satellite
+    this.spaceObjects.push(new Satellite(this.app.stage, this.getRandomPosition()));
 
+    this.app.ticker.add(this.update);
   }
 
-  getRandomPosition() {
-    // get viewbox properties of svg
-    const [vbX, vbY, vbW, vbH] = this.svg.getAttribute('viewBox')!.split(' ').map(vbVal => parseInt(vbVal, 10));
-    const box = {
-      padding: 10,
-      x: vbX,
-      y: vbY,
-      width: vbW,
-      height: vbH
+  update = (delta) => {
+    for (let spObj of this.spaceObjects) {
+      spObj.update(delta);
+      this.containInStage(spObj);
     }
+  }
 
-    return {
-      x: box.padding + Math.random() * (box.width - 2 * box.padding),
-      y: box.padding + Math.random() * (box.height - 2 * box.padding)
+  // keeps spObj inside the bounds of this intros wrapper
+  containInStage(spObj: SpaceObject) {
+    let maxWidth = this.wrapper.clientWidth;
+    let maxHeight = this.wrapper.clientHeight;
+
+    // upper bounds
+    spObj.element.x = spObj.element.x % maxWidth;
+    spObj.element.y = spObj.element.y % maxHeight;
+
+    // lower bounds
+    if (spObj.element.x < 0) {
+      spObj.element.x = maxWidth;
     }
+    if (spObj.element.y < 0) {
+      spObj.element.y = maxHeight;
+    }
+  }
+
+  getRandomPosition(): PIXI.Point {
+    return new PIXI.Point(
+      Math.random() * this.wrapper.offsetWidth,
+      Math.random() * this.wrapper.offsetHeight
+    );
+  }
+
+  createRandomStars(count: number = 50): TwinkleStar[] {
+    let stars: TwinkleStar[] = [];
+    for (let i = 0; i < count; i++) {
+      stars.push(new TwinkleStar(this.app.stage, this.getRandomPosition()));
+    }
+    return stars;
+  }
+
+  createRandomSwooshs(count: number = 10): Swoosh[] {
+    let swooshs: Swoosh[] = [];
+    for (let i = 0; i < count; i++) {
+      swooshs.push(new Swoosh(this.app.stage, this.getRandomPosition()));
+    }
+    return swooshs;
   }
 }

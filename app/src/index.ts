@@ -11,9 +11,9 @@ import { CustomMap } from './office-map';
 import { ScrollEffects } from './scroll-effects';
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  const svgs = Array.from(document.querySelectorAll('.sy-intro__svg'));
-  svgs.forEach(svg => {
-    const intro = new SatellyteIntro(svg as SVGElement);
+  const intros = Array.from(document.querySelectorAll('.sy-intro-wrapper')) as HTMLElement[];
+  intros.forEach(introWrapper => {
+    const intro = new SatellyteIntro(introWrapper);
     intro.run();
   });
 
