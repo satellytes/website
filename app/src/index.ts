@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const contactForm = new ContactForm(contactFormElement);
   }
 
+  // interactive google map replaced with static image
+  // leaving this in for now in case we choose to reactivate it later
   const googleMapsElement = document.querySelector('.google-map') as HTMLElement;
   if (googleMapsElement) {
     const map = new CustomMap(googleMapsElement);
