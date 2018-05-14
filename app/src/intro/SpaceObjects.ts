@@ -26,7 +26,7 @@ export class TwinkleStar extends SpaceObject {
   constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
     super(stage, position);
     this.element.beginFill(0xffffff);
-    this.element.drawStar(0, 0, 4, 2, 0.3);
+    this.element.drawStar(0, 0, 4, 2, 1);
     this.element.endFill();
 
     this.growing = true;
