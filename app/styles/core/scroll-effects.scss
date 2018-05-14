@@ -1,6 +1,7 @@
 .sy-section__content {
-  transition: transform .1s ease;
-  transform: scale(0.4);
+  transition: transform .1s ease, opacity .1s ease;
+  transform: scale(0.9);
+  opacity: 0.7;
 
   &.sy-section__content--visible {
     animation: .3s make-visible forwards;
@@ -9,6 +10,7 @@
   @keyframes make-visible {
     to {
       transform: scale(1);
+      opacity: 1;
     }
   }
 }
