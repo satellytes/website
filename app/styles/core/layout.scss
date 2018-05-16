@@ -19,6 +19,11 @@
   font-weight: 300;
 }
 
+.sy-section__content {
+  @include media-breakpoint-up(sm) {
+    letter-spacing: 0.1px;
+  }
+}
 
 .sy-section__content  + .sy-section__content {
   margin-top: 60px;
