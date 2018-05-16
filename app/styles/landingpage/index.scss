@@ -7,3 +7,14 @@
 * {
   font-family: 'Coco Gothic';
 }
+
+// Increase font-size for single-column sections
+.sy-landingpage__what,
+.sy-landingpage__why,
+.sy-landingpage__meet {
+  @include media-breakpoint-up(sm) {
+    .sy-section__content {
+      font-size: 1.7rem;
+    }
+  }
+}
