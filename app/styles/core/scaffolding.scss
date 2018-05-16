@@ -30,7 +30,7 @@ a {
 
 .sy-link {
   color: sycolor(brand);
-  font-weight: map-get($font-weights, bold);
+  font-weight: map-get($font-weights, medium);
   text-decoration: none;
 }
 
