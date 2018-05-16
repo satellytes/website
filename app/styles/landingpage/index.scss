@@ -7,15 +7,3 @@
 * {
   font-family: 'Coco Gothic';
 }
-
-// Push the content for those main section a little bit
-// in.
-.sy-landingpage__what,
-.sy-landingpage__why {
-  @include media-breakpoint-up(sm) {
-    .sy-section__content {
-      margin-left: 80px;
-      margin-right: 80px;
-    }
-  }
-}
