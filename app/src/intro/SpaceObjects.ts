@@ -26,7 +26,7 @@ export class TwinkleStar extends SpaceObject {
   constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
     super(stage, position);
     this.element.beginFill(0xffffff);
-    this.element.drawStar(0, 0, 4, 2, 1);
+    this.element.drawCircle(0, 0, 0.4);
     this.element.endFill();
 
     this.growing = true;
@@ -55,8 +55,9 @@ export class TwinkleStar extends SpaceObject {
 export class Swoosh extends SpaceObject {
   private MIN_APPERANCE: number = 400;
   private MAX_APPERANCE: number = 4000;
-  private MIN_SCALE: number = 0.4;
-  private APPEAR_PROBABILITY: number = 0.9999;
+  private MIN_SCALE: number = 0.1;
+  private MAX_SCALE: number = 0.4;
+  private APPEAR_PROBABILITY: number = 0.0005;
 
   private visible: boolean;
   private disappearing: boolean;
@@ -70,7 +71,7 @@ export class Swoosh extends SpaceObject {
   constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
     super(stage, position);
     this.element.beginFill(0xffffff);
-    this.element.drawStar(0, 0, 13, 10, 2);
+    this.element.drawCircle(0, 0, 2);
     this.element.endFill();
     this.element.scale = new PIXI.Point(0, 0);
 
@@ -84,8 +85,8 @@ export class Swoosh extends SpaceObject {
   }
 
   update(delta) {
-    // make this swoosh appear again if currently not visible with a chance of 0.1%
-    if (!this.visible && Math.random() > this.APPEAR_PROBABILITY) {
+    // make this swoosh appear again if currently not visible with a chance of APPEAR_PROBABILITY
+    if (!this.visible && Math.random() > 1 - this.APPEAR_PROBABILITY) {
       this.appearanceTimeStamp = Date.now();
       this.element.scale = new PIXI.Point(this.MIN_SCALE, this.MIN_SCALE);
       this.visible = true;
@@ -97,8 +98,8 @@ export class Swoosh extends SpaceObject {
       this.element.y += this.directions.y * 4 * Math.sin(Date.now() / 1000);
 
       let scaleDir = this.disappearing ? -2 : 1;
-      this.element.scale.x += scaleDir * this.scaleSpeed * 0.01;
-      this.element.scale.y += scaleDir * this.scaleSpeed * 0.01;
+      this.element.scale.x = Math.min(this.MAX_SCALE, this.element.scale.x + scaleDir * this.scaleSpeed * 0.01);
+      this.element.scale.y = Math.min(this.MAX_SCALE, this.element.scale.y + scaleDir * this.scaleSpeed * 0.01);
 
       // if has been visible for at least MIN_APPEARANCE and longer than a squared random part
       // of the MAX_APPEARANCE: hide this swoosh

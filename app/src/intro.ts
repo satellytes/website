@@ -70,7 +70,7 @@ export class SatellyteIntro {
     return stars;
   }
 
-  createRandomSwooshs(count: number = 10): Swoosh[] {
+  createRandomSwooshs(count: number = 4): Swoosh[] {
     let swooshs: Swoosh[] = [];
     for (let i = 0; i < count; i++) {
       swooshs.push(new Swoosh(this.app.stage, this.getRandomPosition()));
