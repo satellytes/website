@@ -3,6 +3,17 @@
   margin-left: -20px;
   margin-right: -20px;
   margin-bottom: -150px; // bleed in following content
+  // don't show 'calc(100vh-150px)' of white nothingness on very tall mobile screens
+  @include media-breakpoint-down(sm) {
+    @media (min-height: 720px) {
+      height: calc(100vh - 200px);
+    }
+  }
+  // for screens that are less than 550px tall make the intro larger to avoid
+  // layering text and brandname
+  @media (max-height: 550px) {
+    height: 100vh;
+  }
 }
 
 .sy-intro-wrapper {
@@ -32,7 +43,6 @@
   display: none;
   width: 100%;
   height: 100%;
-  min-height: 500px;
   @include media-breakpoint-up(sm) {
     display: block;
   }
@@ -42,26 +52,6 @@
   display: block;
   width: 100%;
   height: 100%;
-}
-
-@keyframes twinkle {
-  20% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  80% {
-    opacity: 0;
-  }
-
-}
-
-.satellyte__stars circle {
-  opacity: 0;
-  animation: 4s infinite alternate twinkle;
 }
 
 @keyframes orbit {
@@ -74,6 +64,6 @@
 }
 
 .planet__orbiter {
-  transform-origin: 250px -100px;
+  transform-origin: 250px -80px;
   animation:  10s infinite linear orbit;
 }

@@ -1,5 +1,5 @@
 .sy-navigation {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -27,7 +27,7 @@
 
 .sy-navigation__item {
   text-decoration: none;
-  line-height: 60px;
+  line-height: $nav-height;
   font-size: 1.6rem;
   font-weight: map-get($font-weights, medium);
 
