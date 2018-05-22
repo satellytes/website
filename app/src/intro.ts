@@ -2,50 +2,55 @@ import * as PIXI from 'pixi.js'
 import { SpaceObject, TwinkleStar, Swoosh, Satellite } from './intro/SpaceObjects';
 
 export class SatellyteIntro {
-  private spaceObjects: SpaceObject[] = [];
-  private app: PIXI.Application;
-  private resolution = 1;
+  private _spaceObjects: SpaceObject[] = [];
+  private _app: PIXI.Application;
+  private _resolution = 1;
+  private _planetEl: any;
 
-  constructor(private wrapper: HTMLElement) { }
+  constructor(private _wrapper: HTMLElement) { }
 
   run() {
     if (window.devicePixelRatio) {
-      this.resolution = window.devicePixelRatio;
+      this._resolution = window.devicePixelRatio;
     }
-    this.app = new PIXI.Application({
-      width: this.wrapper.clientWidth,
-      height: this.wrapper.clientHeight,
+    this._app = new PIXI.Application({
+      width: this._wrapper.clientWidth,
+      height: this._wrapper.clientHeight,
       antialias: true,
       transparent: true,
-      resolution: this.resolution,
+      _resolution: this._resolution,
       autoResize: true
     });
-    this.wrapper.appendChild(this.app.view);
+    this._wrapper.appendChild(this._app.view);
+    // find white planet in background
+    this._planetEl = this._wrapper.querySelector('.sy-intro__planet');
+    // attach scroll-handler vor parallax effect
+    this.registerScrollHandler();
 
     // calculate twinkleStar count: 1 star for every 10000 square-pixels
-    const twinkleStarCount = this.wrapper.clientWidth * this.wrapper.clientHeight / 10000;
+    const twinkleStarCount = this._wrapper.clientWidth * this._wrapper.clientHeight / 10000;
 
     // add twinkle stars
-    this.spaceObjects.push(...this.createRandomStars(twinkleStarCount));
+    this._spaceObjects.push(...this.createRandomStars(twinkleStarCount));
     // add shooting stars
-    this.spaceObjects.push(...this.createRandomSwooshs());
+    this._spaceObjects.push(...this.createRandomSwooshs());
     // add a single satellite
-    this.spaceObjects.push(new Satellite(this.app.stage, this.getRandomPosition()));
+    this._spaceObjects.push(new Satellite(this._app.stage, this.getRandomPosition()));
 
-    this.app.ticker.add(this.update);
+    this._app.ticker.add(this.update);
   }
 
   update = (delta) => {
-    for (let spObj of this.spaceObjects) {
+    for (let spObj of this._spaceObjects) {
       spObj.update(delta);
       this.containInStage(spObj);
     }
   }
 
-  // keeps spObj inside the bounds of this intros wrapper
+  // keeps spObj inside the bounds of this intros _wrapper
   containInStage(spObj: SpaceObject) {
-    let maxWidth = this.wrapper.clientWidth;
-    let maxHeight = this.wrapper.clientHeight;
+    let maxWidth = this._wrapper.clientWidth;
+    let maxHeight = this._wrapper.clientHeight;
 
     // upper bounds
     spObj.element.x = spObj.element.x % maxWidth;
@@ -60,17 +65,26 @@ export class SatellyteIntro {
     }
   }
 
+  registerScrollHandler() {
+    window.addEventListener('scroll', event => {
+      if (this._planetEl) {
+        const newY = -0.07 * window.scrollY;
+        this._planetEl.style.transform = `translateY(${newY}px)`;
+      }
+    }, false);
+  }
+
   getRandomPosition(): PIXI.Point {
     return new PIXI.Point(
-      Math.random() * this.wrapper.offsetWidth,
-      Math.random() * this.wrapper.offsetHeight
+      Math.random() * this._wrapper.offsetWidth,
+      Math.random() * this._wrapper.offsetHeight
     );
   }
 
   createRandomStars(count: number = 50): TwinkleStar[] {
     let stars: TwinkleStar[] = [];
     for (let i = 0; i < count; i++) {
-      stars.push(new TwinkleStar(this.app.stage, this.getRandomPosition()));
+      stars.push(new TwinkleStar(this._app.stage, this.getRandomPosition()));
     }
     return stars;
   }
@@ -78,7 +92,7 @@ export class SatellyteIntro {
   createRandomSwooshs(count: number = 4): Swoosh[] {
     let swooshs: Swoosh[] = [];
     for (let i = 0; i < count; i++) {
-      swooshs.push(new Swoosh(this.app.stage, this.getRandomPosition()));
+      swooshs.push(new Swoosh(this._app.stage, this.getRandomPosition()));
     }
     return swooshs;
   }
