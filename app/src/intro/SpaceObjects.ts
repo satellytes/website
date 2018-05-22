@@ -15,7 +15,7 @@ export abstract class SpaceObject {
 }
 
 export class TwinkleStar extends SpaceObject {
-  private MAX_SCALE = 1.6;
+  private MAX_SCALE = 1;
   private MIN_SCALE = 0.1;
 
   private scale: PIXI.Point;
@@ -26,11 +26,11 @@ export class TwinkleStar extends SpaceObject {
   constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
     super(stage, position);
     this.element.beginFill(0xffffff);
-    this.element.drawCircle(0, 0, 0.4);
+    this.element.drawCircle(0, 0, 1);
     this.element.endFill();
 
     this.growing = true;
-    this.scaleSpeed = Math.random() * 3;
+    this.scaleSpeed = Math.random() * 0.8;
     this.scale = new PIXI.Point(this.MIN_SCALE, this.MIN_SCALE);
   }
 

@@ -4,16 +4,21 @@ import { SpaceObject, TwinkleStar, Swoosh, Satellite } from './intro/SpaceObject
 export class SatellyteIntro {
   private spaceObjects: SpaceObject[] = [];
   private app: PIXI.Application;
+  private resolution = 1;
 
   constructor(private wrapper: HTMLElement) { }
 
   run() {
+    if (window.devicePixelRatio) {
+      this.resolution = window.devicePixelRatio;
+    }
     this.app = new PIXI.Application({
       width: this.wrapper.clientWidth,
       height: this.wrapper.clientHeight,
       antialias: true,
       transparent: true,
-      resolution: 1
+      resolution: this.resolution,
+      autoResize: true
     });
     this.wrapper.appendChild(this.app.view);
 
