@@ -17,7 +17,7 @@
 
 .sy-section {
   margin-top: 60px;
-  font-weight: 300;
+  font-weight: map-get($font-weights, light);
 }
 
 .sy-section__content {

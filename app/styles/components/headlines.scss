@@ -1,12 +1,11 @@
 h1, h2, h3, h4, h5 {
   margin: 0;
-  font-weight: map-get($font-weights, normal);
+  font-weight: map-get($font-weights, regular);
 }
 .sy-headline {
   margin: 0;
   padding: 0;
   font-family: 'Coco Gothic';
-  font-weight: 600;
 }
 
 .sy-headline--section {

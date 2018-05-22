@@ -29,7 +29,7 @@
   text-decoration: none;
   line-height: $nav-height;
   font-size: 1.6rem;
-  font-weight: map-get($font-weights, medium);
+  font-weight: map-get($font-weights, regular);
 
   @include media-breakpoint-up(sm) {
     &:not(:first-child){
