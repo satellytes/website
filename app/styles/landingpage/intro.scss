@@ -29,6 +29,7 @@
 }
 
 .sy-intro__compact {
+
   display: block;
   width: 100%;
   height: 100%;
@@ -42,7 +43,6 @@
   display: none;
   width: 100%;
   height: 100%;
-
   @include media-breakpoint-up(sm) {
     display: block;
   }
@@ -52,24 +52,18 @@
   display: block;
   width: 100%;
   height: 100%;
-  overflow: visible;
 }
 
 @keyframes orbit {
   0% {
-    transform: rotateZ(10deg);
+    transform: rotateZ(30deg);
   }
   100% {
-    transform: rotateZ(-25deg);
+    transform: rotateZ(-20deg);
   }
 }
 
 .planet__orbiter {
-  transform-origin: 150px -150px;
+  transform-origin: 250px -80px;
   animation:  10s infinite linear orbit;
-}
-.sy-intro__large {
-  .planet__orbiter {
-    transform-origin: 800px -450px;
-  }
 }
