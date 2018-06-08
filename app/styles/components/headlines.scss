@@ -26,7 +26,17 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+.sy-headline--paragraph {
+
+  &::before {
+    content: "§ " counter(paragraph);
+    counter-increment: paragraph;
+    margin-right: 13px;
+  }
+}
+
 .sy-header {
+  counter-reset: paragraph;
   color: sycolor(brand);
   margin-bottom: 60px;
 

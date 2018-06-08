@@ -1,0 +1,55 @@
+.sy-list {
+  counter-reset: list;
+}
+
+.sy-list__item {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.sy-list--dashed {
+
+  > .sy-list__item {
+    list-style: none;
+
+    &::before {
+      content: '- ';
+      position: absolute;
+      left: -15px;
+    }
+  }
+}
+
+.sy-list--lettered-right-parenthesis {
+
+  > .sy-list__item {
+    list-style: none;
+
+    &::before {
+      counter-increment: list;
+      content: counter(list, lower-latin) ")";
+      position: absolute;
+      left: -25px;
+      letter-spacing: 4px;
+    }
+  }
+}
+
+.sy-list--headless {
+  list-style-type: none;
+}
+
+.sy-list--parenthesis {
+
+  > .sy-list__item {
+    list-style: none;
+
+    &::before {
+      counter-increment: list;
+      content: "(" counter(list) ")";
+      position: absolute;
+      left: -30px;
+      letter-spacing: 4px;
+    }
+  }
+}
