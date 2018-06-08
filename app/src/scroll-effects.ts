@@ -5,7 +5,7 @@ export class ScrollEffects {
 
   constructor(private root: HTMLElement) {
     const options = {
-      threshold: [0.2]
+      threshold: [0.1]
     };
     this.observer = new IntersectionObserver(this.handleIntersection, options);
     this.init();
