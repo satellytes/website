@@ -35,17 +35,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     map.show();
   }
 
-  // setup smooth scroll
-  Array.from(document.querySelectorAll('.sy-navigation__item')).forEach(link => {
+  // setup smooth scroll for internal links
+  Array.from(document.querySelectorAll('a[href^="/#"], a[href^="#"]')).forEach(link => {
     link.addEventListener('click', event => {
       const href = link.getAttribute('href');
-      const sanitizedLink = href!.replace('/', '');
-      const target = document.querySelector(`${sanitizedLink}`) as HTMLElement;
+      const sanitizedHref = href!.replace('/', '');
+      const target = document.querySelector(`${sanitizedHref}`) as HTMLElement;
       if (target) {
         event.preventDefault();
-        window.history.replaceState({}, sanitizedLink, href);
+        window.history.replaceState({}, sanitizedHref, href);
+        const offsetTop  = target.getBoundingClientRect().top + document.documentElement.scrollTop;
         // remove 70px from the top to make sure headline is visible below navigation bar
-        smoothScroll(target.offsetTop - 70);
+        smoothScroll(offsetTop - 70);
       }
     });
   });

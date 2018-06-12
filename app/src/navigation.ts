@@ -132,10 +132,8 @@ export class Navigation {
     const sectionNames = ['sy-what', 'sy-why', 'sy-meet', 'sy-contact'];
     // - find corresponding sections,
     // - get rid of nulls and undefineds,
-    // - order by appearance on page from top to bottom
     const sections = (sectionNames.map(name => document.querySelector(`#${name}`)) as HTMLElement[])
-    .filter(section => section)
-    .sort((a, b) => a.offsetTop - b.offsetTop);
+    .filter(section => section);
 
     let ticking = false;
     window.addEventListener('scroll', () => {
