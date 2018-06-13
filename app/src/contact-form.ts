@@ -85,7 +85,6 @@ export class ContactForm {
     const elements = Array.from(this._formElement.querySelectorAll('.sy-formfield')) as HTMLElement[];
 
     this.formfields = elements.map((element) => new FormField(element))
-    console.log(this.formfields)
   }
 
   onSubmit = (event) => {
