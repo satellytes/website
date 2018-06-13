@@ -1,35 +1,12 @@
 .sy-intro {
   height: calc(100vh - 100px);
+  min-height: 200px;
+  max-height: 60vh;
   margin-left: -20px;
   margin-right: -20px;
-  margin-bottom: -150px; // bleed in following content
-  // don't show 'calc(100vh-150px)' of white nothingness on very tall mobile screens
-  @include media-breakpoint-down(sm) {
-    @media (min-height: 720px) {
-      height: calc(100vh - 200px);
-    }
-  }
-  // for screens that are less than 550px tall make the intro larger to avoid
-  // layering text and brandname
-  @media (max-height: 550px) {
-    height: 100vh;
-  }
-}
-
-.sy-intro-wrapper {
-  position: relative;
-  height: 100%;
-
-  canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
 }
 
 .sy-intro__compact {
-
   display: block;
   width: 100%;
   height: 100%;
@@ -43,6 +20,7 @@
   display: none;
   width: 100%;
   height: 100%;
+
   @include media-breakpoint-up(sm) {
     display: block;
   }
@@ -54,6 +32,11 @@
   height: 100%;
 }
 
+.planet__orbiter {
+  transform-origin: 150px -150px;
+  animation:  10s infinite linear orbit;
+}
+
 @keyframes orbit {
   0% {
     transform: rotateZ(30deg);
@@ -61,9 +44,4 @@
   100% {
     transform: rotateZ(-20deg);
   }
-}
-
-.planet__orbiter {
-  transform-origin: 150px -150px;
-  animation:  10s infinite linear orbit;
 }

@@ -4,18 +4,16 @@ import 'what-input';
 
 const smoothScroll = require('smoothscroll');
 
-import { SatellyteIntro } from './intro';
+import { SatellyteBackground } from './background';
 import { Navigation } from './navigation';
 import { ContactForm } from './contact-form';
 import { CustomMap } from './office-map';
 import { ScrollEffects } from './scroll-effects';
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  const intros = Array.from(document.querySelectorAll('.sy-intro-wrapper')) as HTMLElement[];
-  intros.forEach(introWrapper => {
-    const intro = new SatellyteIntro(introWrapper);
-    intro.run();
-  });
+
+  const background = new SatellyteBackground();
+  document.documentElement.appendChild(background.canvas);
 
   const navigationElement = document.querySelector('.sy-navigation');
   if(navigationElement) {
