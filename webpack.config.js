@@ -3,6 +3,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 
 console.log('devMode: ', devMode);
@@ -103,6 +104,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       filename: 'privacy.html',
       template: 'privacy.html'
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer'
     })
   ],
   stats: 'normal'
