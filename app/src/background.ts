@@ -6,6 +6,7 @@ export class SatellyteBackground {
   private app: PIXI.Application;
   private width: number = 0;
   private height: number = 0;
+  private heightExcess = 0.4;
   private resizeCooloff = 250;
   private resizeTimeout = -1;
 
@@ -20,10 +21,10 @@ export class SatellyteBackground {
     }, false);
 
     window.addEventListener('scroll', () => {
-      const pos = document.scrollingElement!.scrollTop;
-      const perc = pos / document.documentElement.scrollHeight;
+      const pos = (document.scrollingElement || document.documentElement).scrollTop;
+      const perc = (pos) / (document.documentElement.scrollHeight - window.innerHeight);
 
-      this.app.view.style.transform = `translateY(-${perc * 20}%)`;
+      this.app.view.style.transform = `translateY(-${perc * 100 * this.heightExcess}%)`;
     }, false);
   }
 
@@ -64,7 +65,7 @@ export class SatellyteBackground {
 
   private resizeCanvas() {
     this.width = window.innerWidth;
-    this.height = document.documentElement.scrollHeight;
+    this.height = window.innerHeight * (1 + this.heightExcess);
 
     this.app.renderer.resize(this.width, this.height);
   }
