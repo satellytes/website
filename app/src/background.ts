@@ -6,15 +6,16 @@ export class SatellyteBackground {
   private app: PIXI.Application;
   private width: number = 0;
   private height: number = 0;
+  private resizeCooloff = 250;
+  private resizeTimeout = -1;
 
   constructor() {
     this.run();
 
     window.addEventListener('resize', () => {
       if (this.app) {
-        this.clear();
-        this.resizeCanvas();
-        this.addSpaceObjects();
+        window.clearTimeout(this.resizeTimeout);
+        this.resizeTimeout = window.setTimeout(this.resize, this.resizeCooloff);
       }
     }, false);
 
@@ -30,6 +31,12 @@ export class SatellyteBackground {
     this.setup();
     this.addSpaceObjects();
   }
+
+  private resize = () => {
+    this.clear();
+    this.resizeCanvas();
+    this.addSpaceObjects();
+  };
 
   private setup() {
 
