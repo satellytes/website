@@ -30,6 +30,10 @@
   margin-top: 60px;
 }
 
+.sy-section__content  + .sy-section__content--margin-top-small {
+  margin-top: 40px;
+}
+
 .sy-grid__row {
   @include make-row;
 }

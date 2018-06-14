@@ -5,13 +5,13 @@
 @import "navigation";
 @import "contact";
 
-// Increase font-size for single-column sections
+// Push the content for those main sections in a little bit
 .sy-landingpage__what,
-.sy-landingpage__why,
-.sy-landingpage__meet {
+.sy-landingpage__why {
   @include media-breakpoint-up(sm) {
     .sy-section__content {
-      font-size: 1.7rem;
+      margin-left: 80px;
+      margin-right: 80px;
     }
   }
 }

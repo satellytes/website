@@ -1,40 +1,17 @@
 .sy-services__headline {
-  font-size: 2rem;
-  color: map-get($colors, brand);
+  font-size: 1.7rem;
+  color: map-get($colors, white);
+  margin-bottom: 7px;
 }
 
 .sy-services__item {
   display: block;
-  margin: 0;
-
-  background-repeat: no-repeat;
-  background-size: auto auto;
-  margin-bottom: 20px;
-
-  @include media-breakpoint-up(md) {
-    width: 90%;
-    &:nth-child(odd) {
-      margin-right: 10%;
-    }
-
-    &:nth-child(even) {
-      margin-left: 10%;
-      text-align: right;
-    }
-  }
-
-  @include media-breakpoint-down(sm) {
-
-    &:nth-child(odd) {
-    }
-
-    &:nth-child(even) {
-      text-align: left;
-    }
-  }
 }
 
+.sy-services__item + .sy-services__item {
+  margin-top: 40px;
 
-.sy-services__item + .sy-services__item  {
-  margin-top: 20px;
+  @include media-breakpoint-up(md) {
+    margin-top: 0px;
+  }
 }
