@@ -21,16 +21,18 @@
 }
 
 .sy-section__content {
-  @include media-breakpoint-up(sm) {
-    letter-spacing: 0.2px;
-  }
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.4px;
+  line-height: 1.5;
 }
 
-.sy-section__content  + .sy-section__content {
+.sy-section__content + .sy-section__content {
   margin-top: 60px;
 }
 
-.sy-section__content  + .sy-section__content--margin-top-small {
+.sy-section__content + .sy-section__content--margin-top-small {
   margin-top: 40px;
 }
 
