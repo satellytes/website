@@ -43,6 +43,12 @@
   }
 }
 
+.sy-grid__col--desktop-last {
+
+  @include media-breakpoint-up(md) {
+    order: 2;
+  }
+}
 
 .sy-grid--two-cols {
   display: flex;
