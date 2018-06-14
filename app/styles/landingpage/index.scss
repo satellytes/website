@@ -5,14 +5,3 @@
 @import "navigation";
 @import "clients";
 @import "contact";
-
-// Push the content for those main sections in a little bit
-.sy-landingpage__what,
-.sy-landingpage__why {
-  @include media-breakpoint-up(sm) {
-    .sy-section__content {
-      margin-left: 80px;
-      margin-right: 80px;
-    }
-  }
-}
