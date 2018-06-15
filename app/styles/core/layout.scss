@@ -17,9 +17,6 @@
 
 .sy-section {
   font-weight: map-get($font-weights, light);
-}
-
-.sy-section + .sy-section {
   margin-top: 60px;
 
   @include media-breakpoint-up(md) {
@@ -45,6 +42,10 @@
 
 .sy-grid__row {
   @include make-row;
+
+  .sy-section {
+    margin-top: 60px;
+  }
 }
 
 .sy-grid__col-6 {

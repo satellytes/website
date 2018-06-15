@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const navigation = new Navigation(navigationElement);
   }
 
-  const contactFormElement = document.getElementById('sy-contact-form') as HTMLFormElement;
+  const contactFormElement = document.getElementById('sy-contact-form form') as HTMLFormElement;
   if(contactFormElement !== null) {
     const contactForm = new ContactForm(contactFormElement);
   }

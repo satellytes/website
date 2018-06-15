@@ -1,5 +1,5 @@
-<section class="sy-section" id="sy-contact">
-  <h2 class="sy-headline sy-headline--section">Contact</h2>
+<section class="sy-section" id="sy-contact-form">
+  <h2 class="sy-headline sy-headline--section">Kontakt</h2>
 
   <div class="sy-section__content">
     <p>
@@ -9,14 +9,14 @@
 
     <div class="sy-spacer"></div>
 
-    <form netlify id="sy-contact-form" class="sy-contact-form" name='sy-contact-form' netlify-honeypot="non-human-field">
+    <form netlify class="sy-contact-form" name='sy-contact-form' netlify-honeypot="non-human-field">
       <div style="visibility:hidden;width:1px;height:1px;">
         <label>Don’t fill this out if you're human: <input name="non-human-field"></label>
       </div>
       <div class="sy-formgroup">
         <div class="sy-formfield">
           <div class="sy-formfield__input">
-            <input class="sy-input" type="text" aria-label="Ihr Name" placeholder="Ihr Name" name="name" required aria-required="true" />
+            <input class="sy-input" type="text" aria-label="Name" placeholder="Name" name="name" required />
           </div>
           <div class="sy-formfield__postfix">
               <img src="../../assets/images/icon-person.png" alt="person-icon"/>
@@ -27,8 +27,8 @@
       <div class="sy-formgroup">
         <div class="sy-formfield">
           <div class="sy-formfield__input">
-            <input class="sy-input" type="email" aria-label="Ihre E-Mail"
-                  placeholder="Ihre E-Mail" name="email" required aria-required="true"
+            <input class="sy-input" type="email" aria-label="E-Mail"
+                  placeholder="E-Mail" name="email" required
                   pattern="^[^\\s]+@[^\\s]+\\.[^\\s]{2,63}$" />
           </div>
 
@@ -40,12 +40,12 @@
 
       <div class="sy-formgroup">
         <div class="sy-formfield">
-          <textarea class="sy-input" aria-label="Ihre Nachricht an uns" placeholder="Ihre Nachricht an uns" name="message" required="required"></textarea>
+          <textarea class="sy-input" aria-label="Nachricht" placeholder="Nachricht" name="message" required></textarea>
         </div>
       </div>
 
       <div class="sy-formgroup">
-        <button class="sy-button sy-contact-form__submitt-button">Send</button>
+        <button class="sy-button sy-contact-form__submitt-button">Senden</button>
       </div>
     </form>
   </div>

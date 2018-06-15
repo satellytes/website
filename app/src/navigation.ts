@@ -55,6 +55,7 @@ export class Navigation {
     this.registerScrollListener();
     // fake a minimal scroll to activate current item
     window.scroll(window.scrollX, window.scrollY + 1);
+    window.scroll(window.scrollX, window.scrollY - 1);
   }
 
   handleMouseLeave = () => {
@@ -129,7 +130,7 @@ export class Navigation {
   }
 
   registerScrollListener() {
-    const sectionNames = ['sy-what', 'sy-why', 'sy-meet', 'sy-contact'];
+    const sectionNames = ['sy-what', 'sy-why', 'sy-contact'];
     // - find corresponding sections,
     // - get rid of nulls and undefineds,
     const sections = (sectionNames.map(name => document.querySelector(`#${name}`)) as HTMLElement[])

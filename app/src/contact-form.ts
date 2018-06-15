@@ -100,7 +100,7 @@ export class ContactForm {
     }
     this._formElement.classList.remove('is-submitting');
     this._formElement.classList.add('is-successful');
-    this.submitButton.innerHTML = '<span class="checkmark-icon"></span> Sent';
+    this.submitButton.innerHTML = '<span class="checkmark-icon"></span> Gesendet';
   }
 
   onSubmitError = error => {
@@ -138,7 +138,7 @@ export class ContactForm {
       this.disableInputs();
       this._formElement.classList.add('is-submitting');
       this.submitTimeStamp = Date.now();
-      this.submitButton.innerHTML = 'Sending ...';
+      this.submitButton.innerHTML = 'Sende ...';
 
       const data = this.getData();
 

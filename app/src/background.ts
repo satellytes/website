@@ -22,7 +22,7 @@ export class SatellyteBackground {
 
     window.addEventListener('scroll', () => {
       const pos = (document.scrollingElement || document.documentElement).scrollTop;
-      const perc = (pos) / (document.documentElement.scrollHeight - window.innerHeight);
+      const perc = pos / (document.documentElement.scrollHeight - window.innerHeight);
 
       this.app.view.style.transform = `translateY(-${perc * 100 * this.heightExcess}%)`;
     }, false);
