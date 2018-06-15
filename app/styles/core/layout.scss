@@ -18,6 +18,10 @@
 .sy-section {
   margin-top: 60px;
   font-weight: map-get($font-weights, light);
+
+  @include media-breakpoint-up(md) {
+    margin-top: 120px;
+  }
 }
 
 .sy-section__content {
