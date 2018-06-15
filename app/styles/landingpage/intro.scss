@@ -1,9 +1,9 @@
 .sy-intro {
-  height: calc(100vh - 100px);
-  min-height: 200px;
-  max-height: 60vh;
+  height: calc(100vh - 60px);
   margin-left: -20px;
   margin-right: -20px;
+  animation: 3s cubic-bezier(0.5, 0.1, 0.37, 0.97) scale-in-logo forwards;
+  transform: scale(0.85);
 }
 
 .sy-intro__compact {
@@ -34,7 +34,7 @@
 
 .planet__orbiter {
   transform-origin: 150px -150px;
-  animation:  10s infinite linear orbit;
+  animation: 10s infinite linear orbit;
 }
 
 @keyframes orbit {
@@ -43,5 +43,11 @@
   }
   100% {
     transform: rotateZ(-20deg);
+  }
+}
+
+@keyframes scale-in-logo {
+  to {
+    transform: scale(1);
   }
 }
