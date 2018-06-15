@@ -4,6 +4,7 @@
   left: 0;
   right: 0;
   z-index: 1;
+  font-family: 'Coco Gothic';
 }
 
 .sy-navigation__list {
@@ -40,7 +41,7 @@
   text-decoration: none;
   line-height: $nav-height;
   font-size: 1.6rem;
-  font-weight: map-get($font-weights, regular);
+  font-weight: map-get($font-weights, bold);
 
   @include media-breakpoint-up(sm) {
     &:not(:first-child){
