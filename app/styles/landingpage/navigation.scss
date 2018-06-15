@@ -4,7 +4,6 @@
   left: 0;
   right: 0;
   z-index: 1;
-  overflow: hidden;
 }
 
 .sy-navigation__list {
@@ -13,7 +12,6 @@
   justify-content: space-around;
   background-color: #fff;
   color: sycolor(dark);
-  border-bottom: 1px solid rgba(sycolor(brand), 0.2);
 
   @include media-breakpoint-up(sm) {
     background-color: sycolor(dark);
@@ -21,6 +19,20 @@
     padding-right: $page-padding;
     color: sycolor(white);
     justify-content: flex-start;
+  }
+}
+
+.sy-navigation__language-list {
+  position: absolute;
+  display: none;
+  line-height: 60px;
+  top: 0;
+  right: 20px;
+  color: map-get($colors, brand);
+  font-weight: 600;
+
+  @include media-breakpoint-up(sm) {
+    display: block;
   }
 }
 
@@ -56,4 +68,59 @@
   transform: translate(-50%);
   opacity: 0;
   transition: transform 0.5s ease-out, opacity .4s ease-out;
+}
+
+.sy-navigation__bottom-border {
+  position: absolute;
+  bottom: 0.5px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(sycolor(brand), 0.2);
+  z-index: 10;
+}
+
+.sy-planet {
+  position: absolute;
+  left: 35vw;
+  top: -300vw;
+  height: 380vw;
+  width: 380vw;
+  background-color: white;
+  border-radius: 50%;
+  display: none;
+  animation: 3s cubic-bezier(0.5, 0.1, 0.37, 0.97) scale-in-planet forwards;
+  transform: scale(0.98);
+
+  @include media-breakpoint-up(sm) {
+    display: block;
+  }
+}
+
+.sy-planet__orbiter {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: map-get($colors, brand);
+  top: calc(50% - 8px);
+  left: -11px;
+  transform-origin: calc(200vw + 11px) 0;
+  animation: 20s infinite linear large-orbit;
+}
+
+@keyframes large-orbit {
+  0% {
+    transform: rotateZ(-28deg);
+  }
+  100% {
+    transform: rotateZ(-50deg);
+  }
+}
+
+@keyframes scale-in-planet {
+  to {
+    height: 400vw;
+    width: 400vw;
+  }
 }

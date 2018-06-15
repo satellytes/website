@@ -44,6 +44,7 @@ export class Navigation {
   private _container;
   private _currentItem;
   private _items: NavigationItem[] = [];
+  private _planet;
 
   // flag to determine whether to update the navigation-bar on scroll-events
   // if user clicked on a navigation link we want the page to scroll
@@ -56,6 +57,7 @@ export class Navigation {
     // fake a minimal scroll to activate current item
     window.scroll(window.scrollX, window.scrollY + 1);
     window.scroll(window.scrollX, window.scrollY - 1);
+    this._planet = this._element.querySelector('.sy-planet');
   }
 
   handleMouseLeave = () => {
@@ -153,6 +155,12 @@ export class Navigation {
               const item = this._items.find(item => item.element === itemElement);
               this.activate(item);
             }
+          }
+
+          // update position of white planet
+          if (this._planet) {
+            const pos = window.scrollY * -0.4;
+            this._planet.style.transform = 'translateY(' + pos + 'px)';
           }
 
           ticking = false;
