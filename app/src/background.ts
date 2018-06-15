@@ -91,10 +91,6 @@ export class SatellyteBackground {
     this.app.renderer.resize(this.width);
   }
 
-  public get canvas(): HTMLCanvasElement {
-    return this.app.view;
-  }
-
   private update = (delta) => {
     for (let spObj of this.spaceObjects) {
       spObj.update(delta);

@@ -57,7 +57,7 @@ export class Navigation {
     // fake a minimal scroll to activate current item
     window.scroll(window.scrollX, window.scrollY + 1);
     window.scroll(window.scrollX, window.scrollY - 1);
-    this._planet = this._element.querySelector('.sy-planet');
+    this._planet = this._element.querySelector('.sy-large-planet');
   }
 
   handleMouseLeave = () => {

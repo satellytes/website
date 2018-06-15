@@ -13,7 +13,6 @@ import { ScrollEffects } from './scroll-effects';
 document.addEventListener("DOMContentLoaded", function(event) {
 
   const background = new SatellyteBackground();
-  document.documentElement.appendChild(background.canvas);
 
   const navigationElement = document.querySelector('.sy-navigation');
   if(navigationElement) {

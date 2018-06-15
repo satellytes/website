@@ -80,7 +80,7 @@
   z-index: 10;
 }
 
-.sy-planet {
+.sy-large-planet {
   position: absolute;
   left: 35vw;
   top: -300vw;
@@ -88,16 +88,16 @@
   width: 380vw;
   background-color: white;
   border-radius: 50%;
-  display: none;
-  animation: 3s cubic-bezier(0.5, 0.1, 0.37, 0.97) scale-in-planet forwards;
+  animation: 3s cubic-bezier(0.5, 0.1, 0.37, 1) scale-in-large-planet forwards;
   transform: scale(0.98);
+  display: none;
 
   @include media-breakpoint-up(sm) {
     display: block;
   }
 }
 
-.sy-planet__orbiter {
+.sy-large-planet__orbiter {
   position: absolute;
   height: 15px;
   width: 15px;
@@ -118,7 +118,7 @@
   }
 }
 
-@keyframes scale-in-planet {
+@keyframes scale-in-large-planet {
   to {
     height: 400vw;
     width: 400vw;
