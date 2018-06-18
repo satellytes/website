@@ -35,6 +35,10 @@ class NavigationItem extends EventEmitter {
   deactivate() {
     this._element.classList.remove('sy-navigation__item--active');
   }
+
+  get href() {
+    return this._element.getAttribute('href');
+  }
 }
 
 export class Navigation {
@@ -132,10 +136,15 @@ export class Navigation {
   }
 
   registerScrollListener() {
-    const sectionNames = ['sy-what', 'sy-why', 'sy-contact'];
+
+    const sectionMap = {
+      '#sy-what': 'sy-landingpage__what',
+      '#sy-why': 'sy-landingpage__why',
+      '#sy-contact': 'sy-landingpage__meet'
+    };
     // - find corresponding sections,
     // - get rid of nulls and undefineds,
-    const sections = (sectionNames.map(name => document.querySelector(`#${name}`)) as HTMLElement[])
+    const sections = (Object.values(sectionMap).map(name => document.querySelector(`.${name}`)) as HTMLElement[])
     .filter(section => section);
 
     let ticking = false;
@@ -151,9 +160,11 @@ export class Navigation {
             });
 
             if (section) {
-              const itemElement = this._element.querySelector(`[href$='#${section.id}']`);
-              const item = this._items.find(item => item.element === itemElement);
-              this.activate(item);
+              const href = Object.entries(sectionMap).find(sec => section.classList.contains(sec[1]));
+              if (href) {
+                const item = this._items.find(item => item.href === href[0]);
+                this.activate(item);
+              }
             }
           }
 

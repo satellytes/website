@@ -1,0 +1,7 @@
+
+// position anchors 100px atop where they would be to allow
+// for smoother destinations when navigating
+.sy-anchor {
+  position: absolute;
+  top: -70px;
+}

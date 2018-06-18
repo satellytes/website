@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const navigation = new Navigation(navigationElement);
   }
 
-  const contactFormElement = document.getElementById('sy-contact-form form') as HTMLFormElement;
+  const contactFormElement = document.querySelector('.sy-contact-form') as HTMLFormElement;
   if(contactFormElement !== null) {
     const contactForm = new ContactForm(contactFormElement);
   }
@@ -31,22 +31,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const map = new CustomMap(googleMapsElement);
     map.show();
   }
-
-  // setup smooth scroll for internal links
-  Array.from(document.querySelectorAll('a[href^="/#"], a[href^="#"]')).forEach(link => {
-    link.addEventListener('click', event => {
-      const href = link.getAttribute('href');
-      const sanitizedHref = href!.replace('/', '');
-      const target = document.querySelector(`${sanitizedHref}`) as HTMLElement;
-      if (target) {
-        event.preventDefault();
-        window.history.replaceState({}, sanitizedHref, href);
-        const offsetTop  = target.getBoundingClientRect().top + document.documentElement.scrollTop;
-        // remove 70px from the top to make sure headline is visible below navigation bar
-        smoothScroll(offsetTop - 70);
-      }
-    });
-  });
 
   // setup scroll effects
   const scrollEffects = new ScrollEffects(document.documentElement);
