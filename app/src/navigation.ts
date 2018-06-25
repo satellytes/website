@@ -35,9 +35,18 @@ class NavigationItem extends EventEmitter {
   deactivate() {
     this._element.classList.remove('sy-navigation__item--active');
   }
-
+  //return the
   get href() {
-    return this._element.getAttribute('href');
+    const url = this._element.getAttribute('href');
+    const parts = url.split('#');
+
+    // we are only interested in the part after the hash, if any
+    if(parts.length > 1) {
+      return parts[1];
+    }
+
+    // Silently fail as this could be a normal link in the navigation bar
+    return null;
   }
 }
 
@@ -138,13 +147,14 @@ export class Navigation {
   registerScrollListener() {
 
     const sectionMap = {
-      '#sy-what': 'sy-landingpage__what',
-      '#sy-why': 'sy-landingpage__why',
-      '#sy-contact': 'sy-landingpage__meet'
+      'sy-what': 'sy-landingpage__what',
+      'sy-why': 'sy-landingpage__why',
+      'sy-contact': 'sy-landingpage__meet'
     };
     // - find corresponding sections,
     // - get rid of nulls and undefineds,
-    const sections = (Object.values(sectionMap).map(name => document.querySelector(`.${name}`)) as HTMLElement[])
+    const sections = (Object.values(sectionMap)
+    .map(name => document.querySelector(`.${name}`)) as HTMLElement[])
     .filter(section => section);
 
     let ticking = false;
@@ -158,11 +168,11 @@ export class Navigation {
               // return first section whose top is visible or has its bottom still below fold
               return rect.top > 0 && rect.top < window.innerHeight || rect.bottom > window.innerHeight;
             });
-
             if (section) {
               const href = Object.entries(sectionMap).find(sec => section.classList.contains(sec[1]));
               if (href) {
-                const item = this._items.find(item => item.href === href[0]);
+                const item = this._items.
+                  find(item => item.href === href[0]);
                 this.activate(item);
               }
             }
