@@ -47,7 +47,8 @@ $mobile-browser-bar-offset: 0px;
     width: 380vw;
     background-color: white;
     border-radius: 50%;
-    // animation: 3s cubic-bezier(0.5, 0.1, 0.37, 1) scale-in-large-planet forwards;
+    height: 400vw;
+    width: 400vw;
     transform: scale(0.98);
   }
 
@@ -103,7 +104,6 @@ $mobile-browser-bar-offset: 0px;
   width: 380vw;
   background-color: white;
   border-radius: 50%;
-  animation: 3s cubic-bezier(0.5, 0.1, 0.37, 1) scale-in-large-planet forwards;
   height: 400vw;
   width: 400vw;
   transform: scale(0.98);
