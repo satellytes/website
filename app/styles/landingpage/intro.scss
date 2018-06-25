@@ -47,7 +47,7 @@ $mobile-browser-bar-offset: 0px;
     width: 380vw;
     background-color: white;
     border-radius: 50%;
-    animation: 3s cubic-bezier(0.5, 0.1, 0.37, 1) scale-in-large-planet forwards;
+    // animation: 3s cubic-bezier(0.5, 0.1, 0.37, 1) scale-in-large-planet forwards;
     transform: scale(0.98);
   }
 
@@ -91,3 +91,49 @@ $mobile-browser-bar-offset: 0px;
     transform: scale(1, 1);
   }
 }
+
+
+
+
+.sy-large-planet {
+  position: absolute;
+  left: 35vw;
+  top: -300vw;
+  height: 380vw;
+  width: 380vw;
+  background-color: white;
+  border-radius: 50%;
+  animation: 3s cubic-bezier(0.5, 0.1, 0.37, 1) scale-in-large-planet forwards;
+  height: 400vw;
+  width: 400vw;
+  transform: scale(0.98);
+  display: none;
+
+  @include media-breakpoint-up(sm) {
+    display: block;
+  }
+}
+
+.sy-large-planet__orbiter {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: map-get($colors, brand);
+  top: calc(50% - 8px);
+  left: -11px;
+  transform-origin: calc(200vw + 11px) 0;
+  animation: 20s infinite linear large-orbit;
+}
+
+@keyframes large-orbit {
+  0% {
+    transform: rotateZ(-28deg);
+  }
+  100% {
+    transform: rotateZ(-50deg);
+  }
+}
+
+
+
