@@ -1,77 +1,6 @@
 import * as PIXI from 'pixi.js'
+import { SpaceObject } from './space-object';
 
-export abstract class SpaceObject {
-  public element: PIXI.Graphics;
-
-  constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
-    this.element = new PIXI.Graphics();
-    this.element.x = position.x;
-    this.element.y = position.y;
-    // add element to stage
-    this.stage.addChild(this.element);
-  }
-
-  abstract update(delta: number);
-
-  abstract destroy();
-}
-
-export class TwinkleStar extends SpaceObject {
-  private MAX_SCALE = 1;
-  private MIN_SCALE = 0.1;
-
-  private scale: PIXI.Point;
-  // flag to determine if star is growing or shrinking
-  private growing: boolean = Math.random() > 0.5 ? true : false;
-  private destroyed: boolean = false;
-
-  private destroyedAt: number = 0;
-  private destroyedDelta: number = 0;
-  private scaleSpeed: number = Math.random() * 0.8;
-  private decayTime: number = Math.random() * 40;
-
-  constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
-    super(stage, position);
-    this.element.beginFill(0xffffff);
-    this.element.drawCircle(0, 0, 1);
-    this.element.endFill();
-
-    this.scale = new PIXI.Point(this.MIN_SCALE, this.MIN_SCALE);
-  }
-
-  update(delta) {
-    if (!this.destroyed && this.destroyedAt > 0) {
-      this.destroyedDelta += delta;
-      if (this.destroyedDelta > this.decayTime) {
-        this.stage.removeChild(this.element);
-        this.destroyed = true;
-      }
-    }
-    if (this.destroyed) {
-      return;
-    }
-    this.element.scale = this.getNextScale();
-    if (!this.destroyed && this.element.scale.x > this.MAX_SCALE) {
-      this.growing = false;
-    }
-    if (!this.destroyed && this.element.scale.x < this.MIN_SCALE) {
-      this.growing = true;
-    }
-  }
-
-  getNextScale(): PIXI.Point {
-    let scaleStep = this.growing ? 0.01 : -0.01;
-    let x = this.scale.x += scaleStep * this.scaleSpeed;
-    let y = this.scale.y += scaleStep * this.scaleSpeed;
-    return new PIXI.Point(x, y);
-  }
-
-  destroy() {
-    this.destroyedAt = Date.now();
-    this.scaleSpeed = Math.random() * 22;
-    this.growing = true;
-  }
-}
 
 export class ShootingStar extends SpaceObject {
   private MIN_APPERANCE: number = 400;
@@ -146,29 +75,6 @@ export class ShootingStar extends SpaceObject {
     this.scaleSpeed = Math.random() * 2;
     this.disappearing = false;
     this.visible = true;
-    setTimeout(() => this.stage.removeChild(this.element), Math.random() * 400);
-  }
-}
-
-export class Satellite extends SpaceObject {
-  private direction: PIXI.Point;
-  private speed: number;
-
-  constructor(protected stage, protected positon) {
-    super(stage, positon);
-    this.element.beginFill(0xffffff);
-    this.element.drawCircle(0, 0, 1);
-    this.element.endFill();
-    this.direction = new PIXI.Point(Math.random() - 0.5, Math.random() - 0.5);
-    this.speed = Math.random() * 2 + 0.2;
-  }
-  update(delta) {
-    this.element.x += this.direction.x * this.speed;
-    this.element.y += this.direction.y * this.speed;
-  }
-
-  destroy() {
-    this.speed = 20;
     setTimeout(() => this.stage.removeChild(this.element), Math.random() * 400);
   }
 }

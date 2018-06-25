@@ -1,6 +1,9 @@
-import * as PIXI from 'pixi.js'
-import { SpaceObject, TwinkleStar, ShootingStar, Satellite } from './intro/SpaceObjects';
+import { ShootingStar } from './intro/shooting-star';
+import { TwinkleStar } from './intro/twinkle-star';
+import { Satellite } from './intro/satellite';
+import { SpaceObject } from './intro/space-object';
 
+import * as PIXI from 'pixi.js'
 export class SatellyteBackground {
   private spaceObjects: SpaceObject[] = [];
   private app: PIXI.Application;
@@ -88,6 +91,7 @@ export class SatellyteBackground {
     this.spaceObjects.forEach(spObj => {
       spObj.destroy();
     });
+    this.spaceObjects.length = 0;
     this.app.renderer.resize(this.width);
   }
 
