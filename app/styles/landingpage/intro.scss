@@ -1,5 +1,7 @@
+$mobile-browser-bar-offset: 0px;
+
 .sy-intro {
-  height: calc(100vh - 100px);
+  height: calc(100vh - #{$mobile-browser-bar-offset});
   margin-left: -20px;
   margin-right: -20px;
   display: flex;
@@ -31,7 +33,7 @@
   position: absolute;
   overflow: hidden;
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: calc(100vh - #{$mobile-browser-bar-offset});
   top: 0;
   left: 0;
   z-index: -2;
