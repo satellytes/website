@@ -1,15 +1,18 @@
-.sy-legal {
+.sy-section__content + .sy-section__content {
+  margin-top: 30px;
+}
 
-  .sy-section__content + .sy-section__content {
-    margin-top: 30px;
-  }
+.sy-headline {
+  margin-bottom: 4px;
+}
 
-  .sy-headline {
-    margin-bottom: 4px;
-  }
+.sy-section__content {
+}
 
-  .sy-section__content {
-    text-align: justify;
-    word-break: break-word;
-  }
+.sy-legal .sy-list__item {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
 }
