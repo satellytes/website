@@ -4,6 +4,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 
 console.log('devMode: ', devMode);
@@ -107,7 +108,8 @@ module.exports = {
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
-    })
+    }),
+    new CopyWebpackPlugin([ 'generated/sitemap.xml' ], {})
   ],
   stats: 'normal'
 };
