@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let prodPlugins = [
   new OptimizeCssAssetsPlugin({
@@ -113,6 +114,7 @@ module.exports = {
       defaultAttribute: 'defer'
     }),
     new CopyWebpackPlugin([ 'generated/sitemap.xml' ], {}),
+    new BundleAnalyzerPlugin(),
     ...prodPlugins
   ],
   stats: 'normal'

@@ -15,8 +15,10 @@ export class SatellyteBackground {
   private resizeTimeout = -1;
 
   constructor() {
-    this.run();
 
+
+  }
+  private attachListeners() {
     window.addEventListener('resize', () => {
       if (this.app) {
         window.clearTimeout(this.resizeTimeout);
@@ -35,6 +37,8 @@ export class SatellyteBackground {
   public run() {
     this.setup();
     this.addSpaceObjects();
+
+    this.attachListeners();
   }
 
   private resize = () => {

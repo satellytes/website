@@ -8,10 +8,9 @@ export class ScrollEffects {
       threshold: [0.1]
     };
     this.observer = new IntersectionObserver(this.handleIntersection, options);
-    this.init();
   }
 
-  init() {
+  start() {
     Array.from(this.root.querySelectorAll('.sy-section__content')).forEach(content => {
       this.observer.observe(content);
     });

@@ -1,12 +1,13 @@
-import 'core-js';
-import 'whatwg-fetch';
+// import 'whatwg-fetch';
+import 'core-js/es6/object';
+import 'core-js/es7/object';
+import 'core-js/es6/array';
 
-const smoothScroll = require('smoothscroll');
+// const smoothScroll = require('smoothscroll');
 
 import { SatellyteBackground } from './background';
 import { Navigation } from './navigation';
 import { ContactForm } from './contact-form';
-import { CustomMap } from './office-map';
 import { ScrollEffects } from './scroll-effects';
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -23,14 +24,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const contactForm = new ContactForm(contactFormElement);
   }
 
-  // interactive google map replaced with static image
-  // leaving this in for now in case we choose to reactivate it later
-  const googleMapsElement = document.querySelector('.google-map') as HTMLElement;
-  if (googleMapsElement) {
-    const map = new CustomMap(googleMapsElement);
-    map.show();
-  }
-
   // setup scroll effects
   const scrollEffects = new ScrollEffects(document.documentElement);
+
+  scrollEffects.start();
+  // background.run();
 });

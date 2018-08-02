@@ -9,3 +9,9 @@
 .sy-landingpage__what {
   margin-top: 0;
 }
+
+
+//prevent iee11 shrinkign in flexbox
+.sy-image {
+  flex-shrink: 0;
+}
