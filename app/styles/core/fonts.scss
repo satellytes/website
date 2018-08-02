@@ -1,21 +1,5 @@
 @font-face {
   font-family: 'Coco Gothic';
-  src: url('../assets/fonts/coco/cocogothic-extralight-webfont.woff2') format('woff2'),
-       url('../assets/fonts/coco/cocogothic-extralight-webfont.woff') format('woff');
-  font-weight: 100;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Coco Gothic';
-  src: url('../assets/fonts/coco/cocogothic-extralightitalic-webfont.woff2') format('woff2'),
-       url('../assets/fonts/coco/cocogothic-extralightitalic-webfont.woff') format('woff');
-  font-weight: 100;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Coco Gothic';
   src: url('../assets/fonts/coco/cocogothic-light-webfont.woff2') format('woff2'),
        url('../assets/fonts/coco/cocogothic-light-webfont.woff') format('woff');
   font-weight: 200;
@@ -38,13 +22,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Coco Gothic';
-  src: url('../assets/fonts/coco/cocogothic-italic-webfont.woff2') format('woff2'),
-       url('../assets/fonts/coco/cocogothic-italic-webfont.woff') format('woff');
-  font-weight: 400;
-  font-style: italic;
-}
 
 @font-face {
   font-family: 'Coco Gothic';
@@ -52,28 +29,4 @@
        url('../assets/fonts/coco/cocogothic-bold-webfont.woff') format('woff');
   font-weight: 600;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Coco Gothic';
-  src: url('../assets/fonts/coco/cocogothic-bolditalic-webfont.woff2') format('woff2'),
-       url('../assets/fonts/coco/cocogothic-bolditalic-webfont.woff') format('woff');
-  font-weight: 600;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Coco Gothic';
-  src: url('../assets/fonts/coco/cocogothic-heavy-webfont.woff2') format('woff2'),
-       url('../assets/fonts/coco/cocogothic-heavy-webfont.woff') format('woff');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Coco Gothic';
-  src: url('../assets/fonts/coco/cocogothic-heavyitalic-webfont.woff2') format('woff2'),
-       url('../assets/fonts/coco/cocogothic-heavyitalic-webfont.woff') format('woff');
-  font-weight: 800;
-  font-style: italic;
 }
