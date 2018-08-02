@@ -3,7 +3,7 @@ import 'core-js/es6/object';
 import 'core-js/es7/object';
 import 'core-js/es6/array';
 
-// const smoothScroll = require('smoothscroll');
+const smoothScroll = require('smoothscroll');
 
 import { SatellyteBackground } from './background';
 import { Navigation } from './navigation';
