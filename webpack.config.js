@@ -8,6 +8,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+let devPlugins = [
+  new BundleAnalyzerPlugin()
+]
+
 let prodPlugins = [
   new OptimizeCssAssetsPlugin({
     cssProcessor: require('cssnano'),
@@ -18,6 +22,8 @@ let prodPlugins = [
 
 if(devMode === true){
   prodPlugins.length = 0;
+} else {
+  devPlugins.length = 0;
 }
 
 module.exports = {
@@ -114,8 +120,8 @@ module.exports = {
       defaultAttribute: 'defer'
     }),
     new CopyWebpackPlugin([ 'generated/sitemap.xml' ], {}),
-    new BundleAnalyzerPlugin(),
-    ...prodPlugins
+    ...prodPlugins,
+    ...devPlugins
   ],
   stats: 'normal'
 };
