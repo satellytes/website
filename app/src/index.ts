@@ -1,6 +1,5 @@
 import 'core-js';
 import 'whatwg-fetch';
-import 'what-input';
 
 const smoothScroll = require('smoothscroll');
 

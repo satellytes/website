@@ -1,5 +1,6 @@
-import * as PIXI from 'pixi.js'
+import {Container, Point} from 'pixi.js'
 import { SpaceObject } from './space-object';
+
 
 
 export class ShootingStar extends SpaceObject {
@@ -19,12 +20,12 @@ export class ShootingStar extends SpaceObject {
     y: 1
   };
 
-  constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
+  constructor(protected stage: Container, protected position: Point) {
     super(stage, position);
     this.element.beginFill(0xffffff);
     this.element.drawCircle(0, 0, 2);
     this.element.endFill();
-    this.element.scale = new PIXI.Point(0, 0);
+    this.element.scale = new Point(0, 0);
 
     this.directions.x = Math.random() > 0.5 ? -1 : 1;
     this.directions.y = Math.random() > 0.5 ? -1 : 1;
@@ -40,7 +41,7 @@ export class ShootingStar extends SpaceObject {
     // make this swoosh appear again if currently not visible with a chance of APPEAR_PROBABILITY
     if (!this.visible && Math.random() > 1 - this.APPEAR_PROBABILITY) {
       this.appearanceTimeStamp = Date.now();
-      this.element.scale = new PIXI.Point(this.MIN_SCALE, this.MIN_SCALE);
+      this.element.scale = new Point(this.MIN_SCALE, this.MIN_SCALE);
       this.visible = true;
       this.disappearing = false;
     }
@@ -65,7 +66,7 @@ export class ShootingStar extends SpaceObject {
       if (this.element.scale.x < this.MIN_SCALE) {
         this.visible = false;
         this.disappearing = false;
-        this.element.scale = new PIXI.Point(0, 0);
+        this.element.scale = new Point(0, 0);
       }
     }
   }

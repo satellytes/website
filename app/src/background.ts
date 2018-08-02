@@ -3,10 +3,11 @@ import { TwinkleStar } from './intro/twinkle-star';
 import { Satellite } from './intro/satellite';
 import { SpaceObject } from './intro/space-object';
 
-import * as PIXI from 'pixi.js'
+import {Application, Point } from 'pixi.js'
+
 export class SatellyteBackground {
   private spaceObjects: SpaceObject[] = [];
-  private app: PIXI.Application;
+  private app: Application;
   private width: number = 0;
   private height: number = 0;
   private heightExcess = 0.4;
@@ -49,7 +50,7 @@ export class SatellyteBackground {
       resolution = window.devicePixelRatio;
     }
 
-    this.app = new PIXI.Application({
+    this.app = new Application({
       width: 0,
       height: 0,
       antialias: true,
@@ -92,7 +93,7 @@ export class SatellyteBackground {
       spObj.destroy();
     });
     this.spaceObjects.length = 0;
-    this.app.renderer.resize(this.width);
+    this.app.renderer.resize(this.width, this.height);
   }
 
   private update = (delta) => {
@@ -120,8 +121,8 @@ export class SatellyteBackground {
     }
   }
 
-  private getRandomPosition(): PIXI.Point {
-    return new PIXI.Point(
+  private getRandomPosition(): Point {
+    return new Point(
       Math.random() * this.width,
       Math.random() * this.height
     );

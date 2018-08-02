@@ -1,11 +1,12 @@
-import * as PIXI from 'pixi.js'
+import {Container, Point} from  'pixi.js';
+
 import { SpaceObject } from "./space-object";
 
 export class TwinkleStar extends SpaceObject {
   private MAX_SCALE = 1;
   private MIN_SCALE = 0.1;
 
-  private scale: PIXI.Point;
+  private scale: Point;
   // flag to determine if star is growing or shrinking
   private growing: boolean = Math.random() > 0.5 ? true : false;
   private destroyed: boolean = false;
@@ -14,15 +15,15 @@ export class TwinkleStar extends SpaceObject {
   private destroyedDelta: number = 0;
   private scaleSpeed: number = Math.random() * 0.8;
   private decayTime: number = Math.random() * 40;
-  private nextScale: PIXI.Point;
-  constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
+  private nextScale: Point;
+  constructor(protected stage: Container, protected position: Point) {
     super(stage, position);
     this.element.beginFill(0xffffff);
     this.element.drawCircle(0, 0, 1);
     this.element.endFill();
 
-    this.nextScale = new PIXI.Point();
-    this.scale = new PIXI.Point(this.MIN_SCALE, this.MIN_SCALE);
+    this.nextScale = new Point();
+    this.scale = new Point(this.MIN_SCALE, this.MIN_SCALE);
   }
 
   update(delta) {
@@ -47,7 +48,7 @@ export class TwinkleStar extends SpaceObject {
     }
   }
 
-  updateScale(): PIXI.Point {
+  updateScale() {
     let scaleStep = this.growing ? 0.01 : -0.01;
     let x = this.scale.x += scaleStep * this.scaleSpeed;
     let y = this.scale.y += scaleStep * this.scaleSpeed;

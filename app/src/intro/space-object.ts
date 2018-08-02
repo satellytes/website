@@ -1,10 +1,10 @@
-import * as PIXI from 'pixi.js'
+import {Graphics, Container, Point} from 'pixi.js'
 
 export abstract class SpaceObject {
-  public element: PIXI.Graphics;
+  public element: Graphics;
 
-  constructor(protected stage: PIXI.Container, protected position: PIXI.Point) {
-    this.element = new PIXI.Graphics();
+  constructor(protected stage: Container, protected position: Point) {
+    this.element = new Graphics();
     this.element.x = position.x;
     this.element.y = position.y;
     // add element to stage

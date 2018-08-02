@@ -5,10 +5,19 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+let prodPlugins = [
+  new OptimizeCssAssetsPlugin({
+    cssProcessor: require('cssnano'),
+    cssProcessorOptions: { discardComments: { removeAll: true } },
+    canPrint: true
+  })
+]
 
-console.log('devMode: ', devMode);
-
+if(devMode === true){
+  prodPlugins.length = 0;
+}
 
 module.exports = {
   context: path.resolve(__dirname, 'app'),
@@ -22,6 +31,11 @@ module.exports = {
   },
   entry: {
     main: ['./src/index.ts', './styles/index.scss']
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   module: {
     rules: [
@@ -63,7 +77,7 @@ module.exports = {
       },
       // IMAGES
       {
-        test: /\.(jpe?g|png|gif|svg)$/,
+        test: /\.(jpe?g|png|gif|svg|woff|woff2)$/,
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]'
@@ -73,17 +87,6 @@ module.exports = {
         test: /\.(html)$/,
         use: {
           loader: 'html-loader?interpolate'
-        }
-      },
-      // FONTS
-      {
-        test: /\.(woff|woff2)$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            limit: 50000,
-            name: "[path][name].[ext]",
-          }
         }
       }
     ]
@@ -109,7 +112,8 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     }),
-    new CopyWebpackPlugin([ 'generated/sitemap.xml' ], {})
+    new CopyWebpackPlugin([ 'generated/sitemap.xml' ], {}),
+    ...prodPlugins
   ],
   stats: 'normal'
 };
